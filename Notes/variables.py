@@ -12,6 +12,5 @@ print("")
 print(mcdonalds)
 print("")
 number_of_bigmacs = 6
-
-print(number_of_bigmacs-1)
+print(number_of_bigmacs)
 print("")
