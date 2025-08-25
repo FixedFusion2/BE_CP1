@@ -1,11 +1,13 @@
 # TE 2nd Who_are_you?
 import time
 import sys
+
 def slow_print(text, delay=0.1):
        for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)
+
 time.sleep(1)
 slow_print("Hello")
 print("")
