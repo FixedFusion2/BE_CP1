@@ -1,4 +1,5 @@
 print("Test")
 print("Update")
 print("Awesome")
+print("cool")
 name = input("What is your name:")
