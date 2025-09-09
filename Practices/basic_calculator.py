@@ -12,7 +12,7 @@ slow_print("This calculator can add, subtract, mulityply, divide, integer divide
 
 slow_print("Operations: (+, -, *, /, //, %, **)\n")
 
-equation = slow_print("\n Press 1 to add (+).\n Press 2 to subtract (-).\n Press 3 to multiply (*).\n Press 4 to divide (/).\n Press 5 to integer divide (//).\n Press 6 to modulo (%).\n Press 7 to raise (**).\n")
+equation = slow_print("\n Press 1 to add (+).\n Press 2 to subtract (-).\n Press 3 to multiply (*).\n Press 4 to divide (/).\n Press 5 to integer divide (//).\n Press 6 to modulo (%).\n Press 7 to raise (**).\nEnter your equation: ")
 
 if equation == "1":
     num = input("Enter your equation:")
@@ -41,6 +41,3 @@ if equation == "6":
 if equation == "7":
     num = input("Enter your equation:")
     print(eval(num))
-
-slow_print("\nThank you for using the Basic Calculator.\n")
-slow_print("Goodbye.\n")
