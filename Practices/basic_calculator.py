@@ -12,11 +12,37 @@ print("This calculator can add, subtract, mulityply, divide, integer divide, mod
 
 print("Operations: (+, -, *, /, //, %, **)\n")
 
-equation = print("\n Press 1 to add (+).\n Press 2 to subtract (-).\n Press 3 to multiply (*).\n Press 4 to divide (/).\n Press 5 to integer divide (//).\n Press 6 to modulo (%).\n Press 7 to raise (**). ")
+num1 = float(input("Enter your first number: "))
+num2 = float(input("Enter your second number: "))       
+print("\nSelect an operation:")
+print("1. Addition (+)")
+print("2. Subtraction (-)")
+print("3. Multiplication (*)")
+print("4. Division (/)")
+print("5. Integer Division (//)")
+print("6. Modulo (%)")
+print("7. Exponents (**)")
+        
+equation = input("\nEnter your operation (1-7): ")
 
 if equation == "1":
-    num = input("Enter the first number you want add:")
-    num_2 = input("Enter the second number you want to add:")
-    result = float(num) + float(num_2)
-    slow_print("The answer is " + str(result) + ".\n")
-
+    result = num1 + num2
+    print(f"{num1} + {num2} = {result}")
+elif equation == "2":
+    result = num1 - num2
+    print(f"{num1} - {num2} = {result}")
+elif equation == "3":
+    result = num1 * num2
+    print(f"{num1} * {num2} = {result}")
+elif equation == "4":
+    result = num1 / num2
+    print(f"{num1} / {num2} = {result}")
+elif equation == "5":
+    result = num1 // num2
+    print(f"{num1} // {num2} = {result}")
+elif equation == "6":
+    result = num1 % num2
+    print(f"{num1} % {num2} = {result}")
+elif equation == "7":
+    result = num1 ** num2
+    print(f"{num1} ** {num2} = {result}")
