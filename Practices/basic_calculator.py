@@ -1,43 +1,22 @@
 # TE 2nd Basic Calculator
 
 import time
-def slow_print(text, delay=0.05):
-    """Print text slowly, character by character"""
+def slow_print(text, delay=0.025):
+
     for char in text:
         print(char, end='', flush=True)
         time.sleep(delay)
 
-slow_print("\nBasic Calculator Opened.\n")
-slow_print("This calculator can add, subtract, mulityply, divide, integer divide, modulo, and raise numbers.\n")
+print("\nBasic Calculator Opened.\n")
+print("This calculator can add, subtract, mulityply, divide, integer divide, modulo, and raise numbers.\n")
 
-slow_print("Operations: (+, -, *, /, //, %, **)\n")
+print("Operations: (+, -, *, /, //, %, **)\n")
 
-equation = slow_print("\n Press 1 to add (+).\n Press 2 to subtract (-).\n Press 3 to multiply (*).\n Press 4 to divide (/).\n Press 5 to integer divide (//).\n Press 6 to modulo (%).\n Press 7 to raise (**).\nEnter your equation: ")
+equation = print("\n Press 1 to add (+).\n Press 2 to subtract (-).\n Press 3 to multiply (*).\n Press 4 to divide (/).\n Press 5 to integer divide (//).\n Press 6 to modulo (%).\n Press 7 to raise (**). ")
 
 if equation == "1":
-    num = input("Enter your equation:")
-    print(eval(num)) 
+    num = input("Enter the first number you want add:")
+    num_2 = input("Enter the second number you want to add:")
+    result = float(num) + float(num_2)
+    slow_print("The answer is " + str(result) + ".\n")
 
-if equation == "2":
-    num = input("Enter your equation:")
-    print(eval(num))
-
-if equation == "3":
-    num = input("Enter your equation:")
-    print(eval(num))
-
-if equation == "4":
-    num = input("Enter your equation:")
-    print(eval(num))
-
-if equation == "5":
-    num = input("Enter your equation:")
-    print(eval(num))
-
-if equation == "6":
-    num = input("Enter your equation:")
-    print(eval(num))
-
-if equation == "7":
-    num = input("Enter your equation:")
-    print(eval(num))
