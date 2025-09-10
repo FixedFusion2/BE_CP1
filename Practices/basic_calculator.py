@@ -7,8 +7,8 @@ def slow_print(text, delay=0.025):
         print(char, end='', flush=True)
         time.sleep(delay)
 
-print("\nBasic Calculator Opened.\n")
-print("This calculator can add, subtract, mulityply, divide, integer divide, modulo, and raise numbers.\n")
+slow_print("\nBasic Calculator Opened.\n")
+slow_print("This calculator can add, subtract, mulityply, divide, integer divide, modulo, and raise numbers.\n")
 
 print("Operations: (+, -, *, /, //, %, **)\n")
 
