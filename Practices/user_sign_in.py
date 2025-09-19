@@ -14,8 +14,11 @@ def slow_print(text, delay=0.05):
         print(char, end='', flush=True)
         time.sleep(delay)
 
-slow_print("Welcome to the database.")
+slow_print("Enter username and password to the database.")
 print("")
-
+correct_username = "username"
+correct_password = "password"
 username = input("Enter a username: ")
 password = input("Enter a password: ")
+
+if username = 
