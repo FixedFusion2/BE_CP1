@@ -16,9 +16,19 @@ def slow_print(text, delay=0.05):
 
 slow_print("Enter username and password to the database.")
 print("")
-correct_username = "username"
-correct_password = "password"
+correct_username = "@username1"
+correct_password = "p@ssword2"
 username = input("Enter a username: ")
 password = input("Enter a password: ")
 
-if username = 
+if username == correct_username:
+    slow_print('Correct Username ')
+    
+    if password == correct_password:
+        slow_print('and Correct password, welcome to the database.')
+    
+    else:
+        slow_print('Wrong username or password.')
+
+else:
+    slow_print("Wrong username or password.")
