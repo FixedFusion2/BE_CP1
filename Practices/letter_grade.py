@@ -42,3 +42,5 @@ elif grade == 50:
     print("You have an F")
 elif grade <= 50:
     slow_print("How? HOW? how...*sigh*...")
+else:
+    print("Numeric values only excepted nimrod.")
