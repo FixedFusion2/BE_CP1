@@ -1,5 +1,4 @@
-# Fix the game practice
-
+# TE 2nd Fix Game
 import random
 def start_game():
     print("Welcome to the Number Guessing Game!")
@@ -9,20 +8,18 @@ def start_game():
     attempts = 0
     game_over = False
     while not game_over:
-        guess = int(input("Enter your guess: "))#Your guess needs to be specified as an integer or float. Logic Error
-        attempts = attempts + 1
+        guess = int(input("Enter your guess: "))# Logic Error, needs integer.
+        attempts = attempts +1 #While loop needs 10 attepts
         if attempts >= max_attempts:
             print(f"Sorry, you've used all {max_attempts} attempts. The number was {number_to_guess}.")
             game_over = True
-        if guess == number_to_guess:
-            print("Congratulations! You've guessed the number!")
+        elif guess == number_to_guess:
+            print("Congratulations! You've guessed the number!")# needs to become leif because its independent adn will still run code after, Logic Error.
             game_over = True
-        else:
-
-            if guess > number_to_guess:
-                print("Too high! Try again.")#You need to make sure you keep track of your attempts by adding 1 to atempts. Logic Error.
-            elif guess < number_to_guess:
-               print("Too low! Try again.")
-        continue#Redundent. Logic Error.
+        elif guess > number_to_guess:
+            print("Too high! Try again.")
+        elif guess < number_to_guess:
+            print("Too low! Try again.")  
+        continue# Redundent
     print("Game Over. Thanks for playing!")
 start_game()
