@@ -1,4 +1,4 @@
-# FL class Shopping List Manager
+# TE 2nd Shopping List Manager
 import time
 def slow_print(text, delay=0.05):
     """Print text slowly, character by character"""
@@ -7,7 +7,7 @@ def slow_print(text, delay=0.05):
         time.sleep(delay)
 
 slow_print("\nShopping list mananger opened.\n")
-#Put your shopping list variable here
+
 shopping_list = []
 
 
