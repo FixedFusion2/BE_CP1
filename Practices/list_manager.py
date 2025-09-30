@@ -12,7 +12,7 @@ shopping_list = []
 
 
 while True:
-    print("\nPress 1 to add an item. \nPress 2 to remove an item. \nPress 3 to look at your items. \nPress 4 to exit the program.\n(Whole numeric only accepted.)\n")
+    print("\nPress 1 to add an item. \nPress 2 to remove an item. \nPress 3 to look at your items. \nPress 4 to exit the program.\n(Whole numeric values only accepted.)\n")
     action = int(input("\nChoose an option (1-4): "))
 
     if action == 1:
