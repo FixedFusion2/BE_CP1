@@ -1,1 +1,0 @@
-guess > number_to_guess
