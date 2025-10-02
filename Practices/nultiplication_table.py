@@ -1,6 +1,7 @@
 # TE 2nd Multiplication Table
 
-nums = [1,2,3,4,5,6,7,8,9,10,11,12]
-
-for num in nums:
-    print(nums)
+nums = int(input('Please enter a positive integer between 1 an 30: '))
+for row in range(1,nums + 1):
+    for col in range(1,nums + 1):
+        print(row*col, end = "\t")
+    print()
