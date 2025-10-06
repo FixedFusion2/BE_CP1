@@ -12,14 +12,17 @@ slow_print("\nWelcome to rock, paper, scissors!\n")
 
 slow_print("\nYou will be going up against Mr. Mainframe!\n")
 
-mr_m = random.randint(1,3)
+
 # 1 beats 3
 # 3 beats 2
 # 2 beats 1
-slow_print("\nPress 1 to use ROCK, Press 2 to use PAPER, Press 3 to use SCISSORS\n")
-action = input("\nCHOOSE YOUR FIGHTER (1-3): ")
+
 
 while True:
+    mr_m = random.randint(1,3)
+    slow_print("\nPress 1 to use ROCK, Press 2 to use PAPER, Press 3 to use SCISSORS.\n")
+    action = int(input("\nCHOOSE YOUR FIGHTER (1-3): "))
+
     if action == 1 and mr_m == 3:
         slow_print("\nYou played ROCK beating SCISSORS\n")
         slow_print("\nYou beat Mr. Mainframe!\n")
@@ -29,3 +32,26 @@ while True:
     elif action == 2 and mr_m == 1:
         slow_print("\nYou played PAPER beating ROCK\n")
         slow_print("\nYou beat Mr. Mainframe!\n")
+    elif mr_m == 1 and action == 3:
+        slow_print("\nYou played SCISSORS getting beat by ROCK\n")
+        slow_print("\nMr. Mainframe beat you!\n")
+    elif mr_m == 3 and action == 2:
+        slow_print("\nYou played PAPER getting beat by SCISSORS\n")
+        slow_print("\nMr. Mainframe beat you!\n")
+    elif mr_m == 2 and action == 1:
+        slow_print("\nYou played ROCK getting beat by PAPER\n")
+        slow_print("\nMr. Mainframe beat you!\n")
+    elif mr_m == 1 and action == 1:
+        slow_print("\nYou played ROCK Mr. Mainframe played ROCK\n")
+        slow_print("\nITS A TIE!\n")
+    elif mr_m == 2 and action == 2:
+        slow_print("\nYou played ROCK Mr. Mainframe played ROCK\n")
+        slow_print("\nITS A TIE!\n")
+    elif mr_m == 3 and action == 3:
+        slow_print("\nYou played ROCK Mr. Mainframe played ROCK\n")
+        slow_print("\nITS A TIE!\n")
+    play = input("Would you like to keep playing? Types YES to keep playing tpye NO to exit the program: ")
+    if play == "NO":
+        break
+
+    
