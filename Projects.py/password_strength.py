@@ -32,15 +32,23 @@ elif password.isdigit:
     points = +1
     #If statement to check for special characters  if there are special characters, add one point.
     #If it doesn't have a special character, don't add a point
-elif "("or"!"or"@"or"#"or"$"or"%"or"^"or"&"or"*"or"("or")"or"_"+-=[]{}|;:,.<>?)
+elif "("or"!"or"@"or"#"or"$"or"%"or"^"or"&"or"*"or"("or")"or"_"or"+"or"-"or"="or"["or"]"or"}"or"|"or";"or","or"."or"<"or">"or"?":
+    points = +1
     #If statement to check if points is 5, if it is, then say: "Very Strong Password"
-
+elif points == 5:
+    print("Your password is very strong.")
     #If statement to check if points is 4, if it is, then say: "Strong Password"
-
+elif points == 4:
+    print("Your password is strong.")
     #If statement to check if points is 3, if it is, then say: "Moderate Password"
-
+elif points == 3:
+    print("Your password is moderate.")
     #If statement to check if points is 2, if it is, then say: "Weak Password"
-
+elif points == 2:
+    print("Your password is weak.")
     #If statement to check if points is 1, if it is, then say: "Feable Password"
-
+elif points == 1:
+    print("Your password is feable.")
     #If statement to check if points is 0, if it is, then say: "BAD Password"
+elif points == 0:
+    print("Your password is BAD.")
