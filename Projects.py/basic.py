@@ -6,4 +6,4 @@ def slow_print(text, delay=0.05):
         time.sleep(delay)
 
 slow_print("You wake up in an empty chamber...")
-action_1 = input("There is a torch (option 1), a thick stick (option2), and a ")
+action_1 = input("There is a torch (option 1), a thick stick (option2), and a rusty sword (option3): ")
