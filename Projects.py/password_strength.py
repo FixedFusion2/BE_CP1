@@ -9,6 +9,8 @@ print("\nContains at least one number")
 print("\nContains at least one special character (!@#$%^&*()_+-=[]{}|;:,.<>?)\n")
 #password variable input
 password = input("Create your password: ")
+special = ["(","!","@","#","$","%","^","&","*","(",")","_","+","-","=","[","]","{","}","|",";",":",",",".","<",">","?",")"]
+
 #Variable for the points to dettermine how strong their password is.
 points = int()
     #If statement to check the length, if the length is greater than 8 give one point.
@@ -19,20 +21,21 @@ else:
     print()    
     #If statement to check for upper case letters if it has uppercase letter give 1 point,
     #If no  uppercase letters, don't add a point.
-if password.isupper:
+if password.isupper():
     points +=1
     #If statement to aslo check for lower case letters if it has lowercases letters give 1 point,
     #If no lowercase letters, don't add a point.
-if password.islower:
+if password.islower():
     points +=1
     #If statement to check for numbers if it has numbers, give one point.
     #If it doesn't have a number, don't add a point.
-if password.isdigit:
+if password.isdigit():
     points +=1
     #If statement to check for special characters  if there are special characters, add one point.
     #If it doesn't have a special character, don't add a point
-if "("or"!"or"@"or"#"or"$"or"%"or"^"or"&"or"*"or"("or")"or"_"or"+"or"-"or"="or"["or"]"or"{"or"}"or"|"or";"or":"or","or"."or"<"or">"or"?"or")" in password:
-    points +=1
+for char in password:
+        if char in special:
+            points +=1
     #If statement to check if points is 5, if it is, then say: "Very Strong Password"
 if points == 5:
     print("\nYour password is very strong.\n")
@@ -49,6 +52,7 @@ elif points == 2:
 elif points == 1:
     print("\nYour password is feable.\n")
     #If statement to check if points is 0, if it is, then say: "BAD Password"\lif points == 0:
+elif points ==0:    
     print("\nYour password is BAD.\n")
     # Else statements incase theres a different input
 else:
