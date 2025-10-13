@@ -50,6 +50,6 @@ elif points == 1:
     print("\nYour password is feable.\n")
     #If statement to check if points is 0, if it is, then say: "BAD Password"\lif points == 0:
     print("\nYour password is BAD.\n")
-
+    # Else statements incase theres a different input
 else:
     print("Invalid Character")
