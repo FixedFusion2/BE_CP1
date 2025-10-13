@@ -11,8 +11,6 @@ print("\nContains at least one special character (!@#$%^&*()_+-=[]{}|;:,.<>?)\n"
 password = input("Create your password: ")
 #Variable for the points to dettermine how strong their password is.
 points = int()
-#Loops this peice of code if they want to keep checking their password strength or exit.
-
     #If statement to check the length, if the length is greater than 8 give one point.
     #If less than 8 points don't add a point.
 if len(password) >=8:
@@ -33,25 +31,25 @@ if password.isdigit:
     points +=1
     #If statement to check for special characters  if there are special characters, add one point.
     #If it doesn't have a special character, don't add a point
-elif "("or"!"or"@"or"#"or"$"or"%"or"^"or"&"or"*"or"("or")"or"_"or"+"or"-"or"="or"["or"]"or"{"or"}"or"|"or";"or":"or","or"."or"<"or">"or"?"or")" in password:
+if "("or"!"or"@"or"#"or"$"or"%"or"^"or"&"or"*"or"("or")"or"_"or"+"or"-"or"="or"["or"]"or"{"or"}"or"|"or";"or":"or","or"."or"<"or">"or"?"or")" in password:
     points +=1
     #If statement to check if points is 5, if it is, then say: "Very Strong Password"
-elif points == 5:
-    print("Your password is very strong.")
+if points == 5:
+    print("\nYour password is very strong.\n")
     #If statement to check if points is 4, if it is, then say: "Strong Password"
 elif points == 4:
-    print("Your password is strong.")
+    print("\nYour password is strong.\n")
     #If statement to check if points is 3, if it is, then say: "Moderate Password"
 elif points == 3:
-    print("Your password is moderately strong.")
+    print("\nYour password is moderately strong.\n")
     #If statement to check if points is 2, if it is, then say: "Weak Password"
 elif points == 2:
-    print("Your password is weak.")
+    print("\nYour password is weak.\n")
     #If statement to check if points is 1, if it is, then say: "Feable Password"
 elif points == 1:
-    print("Your password is feable.")
+    print("\nYour password is feable.\n")
     #If statement to check if points is 0, if it is, then say: "BAD Password"\lif points == 0:
-    print("Your password is BAD.")
+    print("\nYour password is BAD.\n")
 
 else:
-    print("L")
+    print("Invalid Character")
