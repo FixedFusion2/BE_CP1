@@ -1,7 +1,8 @@
 # TE 2nd For Loops
 import time
 nums = [6,51,1,94,351,946,5489,4,654,684]
-
+names = ["Martha", "Lily", 'Jackson',"Hugo"]
+n = [1,2,3,4,5,6]
 # num is the current instance of the loop
 # nums completes the loop for every item in the list
 # The a for loop lets you do the exact same thing to every item in a group or list.
@@ -24,3 +25,12 @@ for x in range(10,0,-1):#Count by negative 1 has it go backwards
     print(x)
 time.sleep(3)
 #Range is not incluse so it won't include 10 at the end of the print statements
+print("")
+for x in range(20,0,-1):
+    print(x)
+
+for names in names:
+    print("Hello",names)
+
+for n in n:
+    print(n+1)

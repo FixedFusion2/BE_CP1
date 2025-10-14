@@ -31,3 +31,14 @@ else:#Else will only happen if we end the loop by meeting a condition
     print("The loop exited by meeting a condition.")
 
 print("The loop is over!")
+
+count = 0  # Initialize the counter
+
+while count <= 30:
+    print(count)
+    count += 2  # Increment the counter by 2 in each iteration
+
+count_1 = 0
+while count_1 <= 10:
+    print(count_1)
+    count_1+=1
