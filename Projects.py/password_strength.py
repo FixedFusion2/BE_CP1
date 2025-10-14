@@ -21,21 +21,20 @@ else:
     print()    
     #If statement to check for upper case letters if it has uppercase letter give 1 point,
     #If no  uppercase letters, don't add a point.
-if password.isupper():
+if any(char.isupper() for char in password):
     points +=1
     #If statement to aslo check for lower case letters if it has lowercases letters give 1 point,
     #If no lowercase letters, don't add a point.
-if password.islower():
+if any(char.islower() for char in password):
     points +=1
     #If statement to check for numbers if it has numbers, give one point.
     #If it doesn't have a number, don't add a point.
-if password.isdigit():
+if any(char.isdigit() for char in password):
     points +=1
     #If statement to check for special characters  if there are special characters, add one point.
     #If it doesn't have a special character, don't add a point
-for char in password:
-        if char in special:
-            points +=1
+if any(char in special for char in password):
+    points +=1
     #If statement to check if points is 5, if it is, then say: "Very Strong Password"
 if points == 5:
     print("\nYour password is very strong.\n")
