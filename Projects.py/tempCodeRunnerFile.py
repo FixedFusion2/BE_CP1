@@ -1,1 +1,0 @@
-r password is moderately strong.\n")
