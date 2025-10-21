@@ -1,27 +1,37 @@
 # TE 2nd CAESAR CIPHER
 
-print(f"a = {ord("a")}")
-print(f"b = {ord("b")}")
-print(f"c = {ord("c")}")
-print(f"d = {ord("d")}")
-print(f"e = {ord("e")}")
-print(f"f = {ord("f")}")
-print(f"g = {ord("g")}")
-print(f"h = {ord("h")}")
-print(f"i = {ord("i")}")
-print(f"j = {ord("j")}")
-print(f"k = {ord("k")}")
-print(f"l = {ord("l")}")
-print(f"m = {ord("m")}")
-print(f"n = {ord("n")}")
-print(f"o = {ord("o")}")
-print(f"p = {ord("p")}")
-print(f"q = {ord("q")}")
-print(f"r = {ord("r")}")
-print(f"s = {ord("s")}")
-print(f"t = {ord("t")}")
-print(f"u = {ord("u")}")
-print(f"v = {ord("v")}")
-print(f"a = {ord("w")}")
-print(f"a = {ord("x")}")
-print(f"a = {ord("y")}")
+#Function that lets you insert message, shift, or change the mode from encode to decode.
+
+def cipher(text, shift, mode):
+    result = ""
+    #For loop to go through each character one by one
+    for char in text: 
+        if char.isupper():#Checks for uppercase
+            base = ord("A")
+            result += chr((ord(char)- base + shift)%26 + base)#Unicode, 65, wraping around the aplhabet
+        elif char.islower():#Chekcs for lowercase
+            base = ord("a")#Lower case a
+            result += chr((ord(char)- base + shift)%26 + base)#Unicode, 65, modula for wraping around the alphabet
+        else:
+            result += char
+    return result
+
+
+print("\nCaesar Cipher Machine opened.")
+choice = input(" \nType 'encode' to encrypt, type 'decode' to decrypt: ")#Inputs for user
+message = input("\nEnter your message (only letter values): ")
+shift = int(input("\nEnter how many letters do you want to shift: "))
+
+if choice == 'decode':#For decoding
+    shift = -shift
+print(cipher(message , shift, choice)) 
+
+
+    
+
+
+
+
+
+
+
