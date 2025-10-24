@@ -24,4 +24,4 @@ shift = int(input("\nEnter how many letters do you want to shift: "))#Input for 
 
 if choice == 'decode':#For decoding
     shift = -shift
-print(cipher(message , shift, choice)) #The output of the code using the parameters of the function.
+print(cipher(message , shift, choice)) #The output of the code using the parameters of the function.s
