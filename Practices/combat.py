@@ -10,26 +10,14 @@ defense = 15
 attack = 15
 hit = random.randint(1,16)
 fighter = print(f"You chose fighter.\nYour stats are:\nHealth, {health+10}\nDefense, {defense-5}\nAttack, {attack+15}")
-wizard = print(f"You chose Wizard.\nYour stats are:\nHealth, {health+15}\nDefense, {defense+10}\nAttack, {attack-5}")
-cleric = print(f"You chose Cleric.\nYour stats are:\nHealth, {health+10}\nDefense, {defense+15}\nAttack, {attack-}")
+wizard = print(f"You chose Wizard.\nYour stats are:\nHealth, {health+15}\nDefense, {defense+5}\nAttack, {attack+10}")
+cleric = print(f"You chose Cleric.\nYour stats are:\nHealth, {health+10}\nDefense, {defense+15}\nAttack, {attack+5}")
 if character == "1":
-    print("You chose fighter.")
-    print("Your stats are:")
-    print(f"Health, {health+10}")
-    print(f"Defense, {defense-5}")
-    print(f"Attack, {attack+15}")
+    print(fighter)
 elif character == "2":
-    print("You chose Wizard.")
-    print("Your stats are:")
-    print(f"Health, {health+15}")
-    print(f"Defense, {defense+10}")
-    print(f"Attack, {attack-5}")
+    print(wizard)
 elif character == "3":
-    print("You chose Cleric.")
-    print("Your stats are:")
-    print(f"Health, {health+15}")
-    print(f"Defense, {defense+10}")
-    print(f"Attack, {attack-5}")
+    print(cleric)
 
 
 def combat():
