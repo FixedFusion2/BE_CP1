@@ -13,7 +13,54 @@ for x in range(100):
     turtle.right(100)
 turtle.end_fill()
 
+turtle.color("#48DA0F")
+turtle.pensize("20")
+turtle.fillcolor("red")
+turtle.begin_fill()
+for x in range(100):
+    turtle.speed(25)
+    turtle.forward(250)
+    turtle.right(100)
+turtle.end_fill()
+
+turtle.color("#E41437")
+turtle.pensize("20")
+turtle.fillcolor("pink")
+turtle.begin_fill()
+for x in range(100):
+    turtle.speed(25)
+    turtle.forward(250)
+    turtle.right(100)
+turtle.end_fill()
+
+turtle.color("#7C6FC5")
+turtle.pensize("20")
+turtle.fillcolor("green")
+turtle.begin_fill()
+for x in range(100):
+    turtle.speed(25)
+    turtle.forward(250)
+    turtle.right(100)
+turtle.end_fill()
+
+
+turtle.color("#BAE206")
+turtle.pensize("20")
+turtle.fillcolor("red")
+turtle.begin_fill()
+for x in range(100):
+    turtle.speed(25)
+    turtle.forward(250)
+    turtle.right(100)
+turtle.end_fill()
+
 turtle.penup(-50,100)
 turtle.goto()
+
+
+
+
+
+
 
 turtle.done()
