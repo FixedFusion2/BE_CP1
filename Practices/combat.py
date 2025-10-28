@@ -56,7 +56,9 @@ else:
 
 #Random who goes first
 turn = random.choice(["player", "monster"])
-print("\nYou move first!" if turn == "player" else f"\nThe {monster['Name']} moves first!")
+print("\nYou move first!" 
+      
+if turn == "player" else f"\nThe {monster['Name']} moves first!")
 
 #Player Turn
 def player_turn():
