@@ -1,3 +1,6 @@
-print(fighter)
-elif character == "2":
-    print(wizard)
+
+
+setup()
+
+t1 = turtle.Turtle()
+t2 = turtle.Turtle()
