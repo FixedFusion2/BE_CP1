@@ -1,6 +1,4 @@
 
-
-setup()
-
-t1 = turtle.Turtle()
-t2 = turtle.Turtle()
+    t2 = turtle.Turtle()
+    t3 = turtle.Turtle()
+    t4 = turtle.Turtle()
