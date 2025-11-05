@@ -1,23 +1,25 @@
 # TE 2nd Maze Generator
+
 import turtle
 import random
 
+
+#Set variables and functions
 def box_setup():
     screen = turtle.Screen()#turtle screen
     screen.setup(2000,1400)
     screen.title("Maze Generator")
     box = turtle.Turtle()
     box.pensize("10")
-    box.speed(100)
     
-    box.setpos(0,300)
+    box.setpos(0,350)#The box
     box.forward(300)
     box.penup()
     box.forward(100)
     box.pendown()
     box.forward(300)
     box.right(90)
-    box.forward(600)
+    box.forward(700)
     box.right(90)
     box.forward(300)
     box.penup()
@@ -25,56 +27,107 @@ def box_setup():
     box.pendown()
     box.forward(300)
     box.right(90)
-    box.forward(300)
+    box.forward(350)
+
+
 box_setup()
 
+row1 = turtle.Turtle()
+row1.pensize("10")
+row2 = turtle.Turtle()
+row2.pensize("10")
+row3 = turtle.Turtle()
+row3.pensize("10")
+row4 = turtle.Turtle()
+row4.pensize("10")
+row5 = turtle.Turtle()
+row5.pensize("10")
+row6 = turtle.Turtle()
+row6.pensize("10")
 
-rows = turtle.Turtle()
-rows.pensize(10)
-rows.speed(100)
-for y in [200, 100, 0, -100, -200]:
-    rows.penup()
-    rows.setpos(0, y)
-    rows.pendown()
-    rows.forward(700)
-
-columns = turtle.Turtle()
-columns.pensize(10)
-columns.speed(100)
-columns.right(90)
-for x in [100, 200, 300, 400, 500, 600]:
-    columns.penup()
-    columns.setpos(x, 300)
-    columns.pendown()
-    columns.forward(600)
-
-
-path_walls = [
-    ((100, 300), "down"),
-    ((200, 300), "down"),
-    ((300, 300), "down"),
-    ((300, 200), "right"),
-    ((400, 200), "down"),
-    ((400, 100), "right"),
-    ((500, 100), "down"),
-    ((500, 0), "right"),
-]
-
-for x, y in path_walls:
-    t = turtle.Turtle()
-    t.pensize(10)
-    t.speed(100)
-    t.penup()
-    t.setpos(x, y)
-    t.pendown()
-    if "right" in path_walls[0][1]:
-        t.forward(100)
+row1.penup()
+row1.setpos(0,250)
+while row1.xcor() < 700:
+    rand=random.randint(1,2)
+    if rand == 1:
+        row1.penup()
+        row1.forward(100)
     else:
-        t.right(90)
-        t.forward(100)
-        t.left(90)
+        row1.pendown()
+        row1.forward(100)
 
 
-#turtle.setpos(0,-20)
+row2.penup()
+row2.setpos(0,150)
+while row2.xcor() < 700:
+    rand=random.randint(1,2)
+    if rand == 1:
+        row2.penup()
+        row2.forward(100)
+    else:
+        row2.pendown()
+        row2.forward(100)
+
+row3.penup()
+row3.setpos(0,50)
+while row3.xcor() < 700:
+    rand=random.randint(1,2)
+    if rand == 1:
+        row3.penup()
+        row3.forward(100)
+    else:
+        row3.pendown()
+        row3.forward(100)
+
+row4.penup()
+row4.setpos(0,-50)
+while row4.xcor() < 700:
+    rand=random.randint(1,2)
+    if rand == 1:
+        row4.penup()
+        row4.forward(100)
+    else:
+        row4.pendown()
+        row4.forward(100)
+
+row5.penup()
+row5.setpos(0,-150)
+while row5.xcor() < 700:
+    rand=random.randint(1,2)
+    if rand == 1:
+        row5.penup()
+        row5.forward(100)
+    else:
+        row5.pendown()
+        row5.forward(100)
+
+row6.penup()
+row6.setpos(0,-250)
+while row6.xcor() < 700:
+    rand=random.randint(1,2)
+    if rand == 1:
+        row6.penup()
+        row6.forward(100)
+    else:
+        row6.pendown()
+        row6.forward(100)
+
+
+
+
+column1 = turtle.Turtle()
+column1.pensize("10")
+
+column1.penup()
+column1.setpos(100,350)
+column1.right(90)
+while column1.ycor() < 700:
+    rand=random.randint(1,2)
+    if rand == 1:
+        column1.penup()
+        column1.forward(100)
+    else:
+        column1.pendown()
+        column1.forward(100)
 
 turtle.done()
