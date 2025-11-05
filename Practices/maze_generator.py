@@ -20,7 +20,6 @@ def box_setup():
     box.forward(600)
     box.right(90)
     box.forward(300)
-    
     box.penup()
     box.forward(100)
     box.pendown()
@@ -31,68 +30,49 @@ box_setup()
 
 
 rows = turtle.Turtle()
-rows.pensize("10")
+rows.pensize(10)
 rows.speed(100)
-rows.penup()
-rows.setpos(0,200)
-rows.pendown()
-rows.forward(700)
-
-rows.penup()
-rows.setpos(0,100)
-rows.pendown()
-rows.forward(700)
-
-rows.penup()
-rows.setpos(0,0)
-rows.pendown()
-rows.forward(700)
-
-rows.penup()
-rows.setpos(0,-100)
-rows.pendown()
-rows.forward(700)
-
-rows.penup()
-rows.setpos(0,-200)
-rows.pendown()
-rows.forward(700)
-
-
+for y in [200, 100, 0, -100, -200]:
+    rows.penup()
+    rows.setpos(0, y)
+    rows.pendown()
+    rows.forward(700)
 
 columns = turtle.Turtle()
-columns.pensize("10")
+columns.pensize(10)
 columns.speed(100)
-columns.penup()
-columns.setpos(100,300)
-columns.pendown()
 columns.right(90)
-columns.forward(600)
+for x in [100, 200, 300, 400, 500, 600]:
+    columns.penup()
+    columns.setpos(x, 300)
+    columns.pendown()
+    columns.forward(600)
 
-columns.penup()
-columns.setpos(200,300)
-columns.pendown()
-columns.forward(600)
 
-columns.penup()
-columns.setpos(300,300)
-columns.pendown()
-columns.forward(600)
+path_walls = [
+    ((100, 300), "down"),
+    ((200, 300), "down"),
+    ((300, 300), "down"),
+    ((300, 200), "right"),
+    ((400, 200), "down"),
+    ((400, 100), "right"),
+    ((500, 100), "down"),
+    ((500, 0), "right"),
+]
 
-columns.penup()
-columns.setpos(400,300)
-columns.pendown()
-columns.forward(600)
-
-columns.penup()
-columns.setpos(500,300)
-columns.pendown()
-columns.forward(600)
-
-columns.penup()
-columns.setpos(600,300)
-columns.pendown()
-columns.forward(600)
+for x, y in path_walls:
+    t = turtle.Turtle()
+    t.pensize(10)
+    t.speed(100)
+    t.penup()
+    t.setpos(x, y)
+    t.pendown()
+    if "right" in path_walls[0][1]:
+        t.forward(100)
+    else:
+        t.right(90)
+        t.forward(100)
+        t.left(90)
 
 
 #turtle.setpos(0,-20)
