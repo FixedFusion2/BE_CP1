@@ -211,4 +211,5 @@ while column6.ycor() > -350:
     else:
         column6.pendown()
         column6.forward(100)        
+        
 turtle.done()
