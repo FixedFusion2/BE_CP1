@@ -121,5 +121,4 @@ generate_maze(0, 0)  # start carving from top-left cell
 
 # Draw
 draw_maze()
-
 turtle.done()
