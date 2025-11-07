@@ -4,25 +4,35 @@
 import turtle
 import random
 
-#Variables
-CELL_SIZE = 40      # size of each square cell in pixels
-ROWS = 10           # number of rows in maze
-COLS = 10           # number of columns in maze
-
+#Global Variables
+CELL_SIZE = 40# size of each square cell in pixels
+ROWS = 10# number of rows in maze
+COLS = 10# number of columns in maze
 #Setup
 screen = turtle.Screen()
 screen.setup(width=1000, height=800)
 screen.title("Random Maze Generator (Guaranteed Solvable)")
 
-pen = turtle.Turtle()
-pen.speed(0)
-pen.pensize(3)
-pen.hideturtle()
+start = turtle.Turtle()#Start point
+start.penup()
+start.setpos(-185,180)
+start.pendown()
+start.write("Start")
 
+end = turtle.Turtle()#End point
+end.penup()
+end.setpos(180,-180)
+end.pendown()
+end.write("End")
+
+pen = turtle.Turtle()#The pen, this actually draws the maze.
+pen.speed(0)#Pen speed
+pen.pensize(3)#Pen Size
+pen.hideturtle() #This will hide the pen when it doesn't need to be seen
 # Maze Cell System
 # Each cell has walls: [top, right, bottom, left]
-maze = [[[True, True, True, True] for c in range(COLS)] for r in range(ROWS)]
-visited = [[False for c in range(COLS)] for r in range(ROWS)]
+maze =[[[True, True, True, True] for c in range(COLS)] for r in range(ROWS)]#Boolean values for maze
+visited = [[False for c in range(COLS)] for r in range(ROWS)]#Booleans values for visted parts of the maze
 
 # Functions
 
