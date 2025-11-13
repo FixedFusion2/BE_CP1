@@ -81,7 +81,7 @@ def diner():
 slow_print("Welcome to Aunt Rosey's Diner!\n")
 
 while True:
-        buy = input("Would you like to order now? (type yes or no): ")
+        buy = input("Would you like to order now? (type yes or no): ").lower()
         if buy == "yes":
                 diner()
                 break
