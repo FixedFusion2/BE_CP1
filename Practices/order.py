@@ -4,8 +4,8 @@
 # Users need to be able to order a drink, a main course and two side dishes. 
 # At the end the program needs to repeat back to the user their full order, and the total cost. 
 import time
+
 def slow_print(text, delay=0.1):
-    """Print text slowly, character by character"""
     for char in text:
         print(char, end='', flush=True)
         time.sleep(delay)
@@ -77,16 +77,18 @@ def diner():
                         slow_print("H-How? W-WWHAT? THANK YOU, THANK YOU. MY FAMILY WON'T STARVE AT ALL THIS WINTER. You see my wife has cancer and one of my children has the flu, now I'll be able to afford 1/10 of the medical bills! THANK YOU SO MUCH!")
                 else:
                         print("I didn't understand what you said. I'm gonna take that as a no.")
+def intro():
+        slow_print("Welcome to Aunt Rosey's Diner!\n")
 
-slow_print("Welcome to Aunt Rosey's Diner!\n")
+        while True:
+                buy = input("Would you like to order now? (type yes or no): ").lower()
+                if buy == "yes":
+                        diner()
+                        break
+                if buy == "no":
+                        print("Okay thats fine.")
+                else:
+                        print("I'm gonna take that as a no.")
 
-while True:
-        buy = input("Would you like to order now? (type yes or no): ").lower()
-        if buy == "yes":
-                diner()
-                break
-        if buy == "no":
-                print("Okay thats fine.")
-        else:
-                print("I'm gonna take that as a no.")
-                
+intro()
+                        
