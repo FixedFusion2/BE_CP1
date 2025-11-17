@@ -2,7 +2,6 @@
 
 import time
 def slow_print(text, delay=0.05):
-    """Print text slowly, character by character"""
     for char in text:
         print(char, end='', flush=True)
         time.sleep(delay)
