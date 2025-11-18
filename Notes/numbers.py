@@ -11,7 +11,7 @@ money = 2
 
 #Float (Floating Point Number) any number with a decimal.
 
-pi = 3.14
+pi = 3.145
 pounds = 5.6
 emotional_damage = .99
 patience_level = -.50
