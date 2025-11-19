@@ -36,10 +36,10 @@ while True:
     operation = input("What operation would you like to perform: ")
     #While loop for numbers 
     while True:
-        num_entry = input("Enter your numbers (type done when finished.): ")
-        if num_entry == "done":#If the user types "done" break the loop
+        numbers = input("Enter your numbers (type done when finished.): ")
+        if numbers == "done":#If the user types "done" break the loop
             break
-        numbers_list.append(float(num_entry))
+        numbers_list.append(float(numbers))
 
     #Call function
     calculate(*numbers_list, operation=operation)
