@@ -21,6 +21,8 @@ def calculate(*args, operation = "sum"):#Parameters for args and operation.
         for num in args:
             product *= num
         print(product)#Showing the output
+    else:
+        print("Invalid operation, try again.")
 
 
 #While True to keep calculating
@@ -33,7 +35,14 @@ while True:
     #Available operations: sum, average, max, min, product
     print("Availabe Operations: sum, average, max, min, product.")
     #Which operation would you like to perform?
-    operation = input("What operation would you like to perform: ")
+    operation_list = ["sum", "average", "max", "min", "product"]
+    while True:
+        operation = input("What operation would you like to perform: ").lower()
+        if operation in operation_list:
+            break
+        else:
+            print("Invalid Operation, try again.")
+            continue
     #While loop for numbers 
     while True:
         numbers = input("Enter your numbers (type done when finished): ")
