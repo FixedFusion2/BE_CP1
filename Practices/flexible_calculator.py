@@ -29,14 +29,14 @@ while True:
     #Number list to hold number values from user input
     numbers_list = []
     #Welcome to the Flexible Calculator!
-    print("Welcome to Flexible Calculator")
+    print("Welcome to Flexible Calculator.")
     #Available operations: sum, average, max, min, product
-    print("Availabe Operations: sum, average, max, min, product")
+    print("Availabe Operations: sum, average, max, min, product.")
     #Which operation would you like to perform?
     operation = input("What operation would you like to perform: ")
     #While loop for numbers 
     while True:
-        numbers = input("Enter your numbers (type done when finished.): ")
+        numbers = input("Enter your numbers (type done when finished): ")
         if numbers == "done":#If the user types "done" break the loop
             break
         numbers_list.append(float(numbers))
