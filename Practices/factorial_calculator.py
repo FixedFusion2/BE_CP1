@@ -6,7 +6,7 @@ def getting_INP():
     if input is float:
         return False
     #If float INP-integers INP is not equal to 0, return Flase
-    if input is int = 0:
+    if input is int == 0:
         return False
     #Else return false
     else:
@@ -19,7 +19,7 @@ def factorial_getting_NUM():
         #Set DON to DON multiplied by list item(current),
         done =
     #Return DON
-
+    return done
 #Set IN to user input of "What number would you like to factorial?"
 factorial = input("What number would you like to factorial: ")
 #Loop while function check on IN is FALSE
