@@ -47,3 +47,51 @@
         #PRINT You leave the Hotel.
 
 #FUNCTION David's Bar
+    #PRINT You enter David's Bar. David greets you and gives you a beer. Beer added to backpack. who would you like to go to talk to at the bar, or where would you like to go? Newline. 1. Talk to David.Newline. 2. Talk to Stranger in back.Newline. 3. Talk to Henry at the Pool table.Newline. 4. Explore the outside back of the Bar.Newline. 5. Leave the bar.
+    #bar_location is set to INPUT type 1-5 to decide where or who to go to.
+    #IF bar_location is set to 1
+        #PRINT David Greets you. David: "Hello John, how can I help you?"
+        #david_choice is set to INPUT 1. "Tell me about the Crypts."" 2."What do you know about the murder?" 3."Nevermind."
+        #IF david_choice is set to 1
+            #PRINT David: "I saw some sketchy guys out back, you should go ask them."
+        #ALSO IF david_choice is set to 2
+            #PRINT David: "I don't really know anything but, I've heard rumors. Talk to the guy in the back."
+        #ELSE:
+            #PRINT David: "Alright."
+    #IF bar_location is set to 2
+        #PRINT Stranger: "What do you want?"
+        #stranger_choice is set to INPUT 1. "I'm here for the crypts." 2. "What do you know about the murder?" 3. "Nevermind."
+        #IF stranger_choice is set to 1
+            #PRINT Stranger: "I heard they're are having a meeting out back, they're selling the goods."
+        #ALSO IF stranger_choice is set to 2
+            #PRINT Stranger: "I don't know anything, but I saw some guy running around franks farm."
+        #ELSE stranger_choice is set to 3
+            #PRINT Stranger: "Go away then."
+    #IF bar_location is set to 3
+        #PRINT Henry: "Hey john, whats up?"
+        #henry_choice is set to INPUT 1. "What do you know about the murder?" 2. "Have you seen any suspicious activity?" 3."Nevermind."
+        #IF henry_choice is set to 1
+            #PRINT Henry: "Honestly nothing, Its awful what happened though."
+        #IF henry_choice is set to 2
+            #PRINT Henry: "I was walking around the forest with my dog and I saw a guy run into a shed about 200ft away."
+        #IF henry-choice is set to 3
+            #PRINT Henry: "Okay."
+    #IF bar_location is set to 4
+        #PRINT You explore the back and find 3 guys huddled around a dumpster.
+        #PRINT A stranger approaches. Stranger: "What are you doing here?"
+        #Have combat fight with the items in your inventory.
+        #If you win the fight
+            #PRINT The strangers run away and drup a peice of paper, and 1 bags of speed steroids, and the pipes tehy were fighting you with.
+    #ELSE
+        #PRINT You leave the bar.
+
+#FUNCTION Bill Diner
+    #PRINT You enter bills diner. Where to you want to go to or who do you want to talk to? 1. Bill 2. Ask a stranger. 3. Ask for a meal 4. Look out back. 5. Leave the bar.
+    #diner_location is set to INPUT Where or who do you want to go to, type 1-5.
+    #IF diner_location is set to 1
+    #PRINT Bill: "Hello John, what can I do for you?"
+        
+            
+
+        
+        
