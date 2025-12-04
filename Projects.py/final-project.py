@@ -1,5 +1,5 @@
 #FUNCTION The House
-    #backpack is set to a LIST
+    #backpack is set to a DICTIONARY
 	#PRINT You Enter the House. What do you want to explore? Newline. 1. The Bedroom Newline. 2. The Living Room Newline. 3. The Basement Newline. 4. The Attic Newline. 5. The Kitchen Newline. 6. The loft. Newline. 7. Leave the house.
 	#house_location is Set to INPUT type 1-7 to decide where to look.
 	#IF house_location is set to 1
@@ -86,12 +86,76 @@
         #PRINT You leave the bar.
 
 #FUNCTION Bill Diner
-    #PRINT You enter bills diner. Where to you want to go to or who do you want to talk to? 1. Bill 2. Ask a stranger. 3. Ask for a meal 4. Look out back. 5. Leave the bar.
-    #diner_location is set to INPUT Where or who do you want to go to, type 1-5.
+    #PRINT You enter Bill's diner. Where to you want to go to or who do you want to talk to? 1. Bill 2. Ask a stranger.  3. Look out back. 4. Leave the bar.
+    #diner_location is set to INPUT Where or who do you want to go to, type 1-4.
     #IF diner_location is set to 1
-    #PRINT Bill: "Hello John, what can I do for you?"
-        
-            
+        #PRINT Bill: "Hello John, what can I do for you?"
+        #bill_choice is set to INPUT 1. What do you know about the murder? 2. Have you seen any suspicious acitivity? 3. Can I get a meal? 4. Nevermind
+        #IF bill_choice is set to 1
+            #PRINT Bill: "I don't know much but that Gang has been hanging around here lately."
+        #ALSO IF bill_choice is set to 2
+            #PRINT Bill: "I saw a guy hanging around Smith's, grabbing something from a dumpster."
+        #ALSO IF bill_choice is set to 3.
+            #PRINT Bill: "Sure heres a Hamburger on me!" Hamburger added to Backpack.
+        #ELSE
+            #PRINT Alright
+    #IF diner_location is set to 2
+        #PRINT Stranger: "What is it?"
+        #stranger1_choice is set to INPUT 1. What do you know about the murder? 2. Have you seen any suspicious activity? 3. Nevermind.
+        #IF stranger1_choice is set to 1
+            #PRINT Honestly nothing, I terrible what happened to the victim though.
+        #ALSO IF stranger1_choice is set to 2
+            #PRINT I saw a guy walking around with a gun by a shed in the woods.
+        #ELSE:
+            #PRINT Okay then.  
+    #IF diner_location is set to 3
+        #PRINT You enter outback of the diner, there is a group of guys hanging around a dumpster.
+        #PRINT Stranger: "Hey what are you do here?!"
+        #have a combat fight with items in your inventory if you win you get streength steroid and a clue about the guys in the woods
+    #IF diner_location is set to 4
+        #PRINT you leave the bar
 
+#FUNCTION Smith Supermarket
+    #PRINT You start walking around Smith's Supermarket, you can't go inside because its closed.
+    #action_choice is set to INPUT You see a guy hanging around the backdoor what do you do? 1. Attack 2. Follow Him 3. Ask him what he's doing here. 4. Just leave.
+    #IF action_choice is set to 1
+        #PRINT You attack the man
+        #Combat thing, maybe a function? if you win he drops a clue that talks about a meeting in the woods, and he runs away. If you lose you die.
+    #IF action_choice is set to 2
+        #PRINT You follow him but he goes around a corner and seems to disappear
+    #IF action_choice is set to 3
+        #PRINT He jumps in surprise and runs away
+    #ELSE
+        #PRINT You leave smith's supermarket.
+
+#FUNCTION Arbys
+    #PRINT You walk to Arby's
+    #set arby_choice to INPUT What do you want to do? 1. Grab a Sandwhich 2. Leave
+    #IF arby_choice is set to 1
+        #PRINT Arby's Employee: "Here you go that will be 7.59", You: "Prices these days are ridiculous." Roast Beef Sandwhich added to backpack.
+    #ALSO IF arby_choice is set to 2.
+        #PRINT You leave Arby's
+
+#FUNCTION Frank's Farm
+    #PRINT You walk in to Frank Farm.
+    #farm_location is set to INPUT What do you do? 1. Talk to Frank. 2. Explore The Fields 3. Explore the shed. 4. Leave The Farm
+    #IF farm_location is set to 1
+        #PRINT You: "Hello Frank" Frank: "Hello John, what can I help you with?"
+        #Set frank_choice is set to INPUT 1. What do you know about the murder? 2. Have you seen any suspicious acitivty? 3. Nevermind.
+        #IF frank_choice is set to 1
+            #PRINT I'm so sorry, your wife... its awful I'm so sorry John, I don't think theres anything I can do.
+        #ALSO IF frank_choice is set to 2
+            #PRINT I saw man running around my fields, I tried chasing him out but he might be bakc again.
+        #ELSE
+            #PRINT All right.
+    #ALSO IF farm_location is set to 2
+        #PRINT You see a man run into the woods with an axe in his hand, the murder weapon...
+    #ALSO IF farm_location is set to 3
+        #PRINT You find a pitchfork in the shed. Pitchfork added to backpack.
+    #ELSE
+        #PRINT You leave the farm.
+
+
+        
         
         
