@@ -1,3 +1,42 @@
+#FUNCTION Combat maybe if needed
+
+#Woods landing missouri is the name of the town
+
+#     ____      ____                     __          _____                          __   _                    ____    ____                        __                    
+#    |_  _|    |_  _|                   |  ]        |_   _|                        |  ] (_)                  |_   \  /   _|                      |  ]                   
+#      \ \  /\  / / .--.    .--.    .--.| |  .--.     | |      ,--.   _ .--.   .--.| |  __   _ .--.   .--./)   |   \/   |  __   _   _ .--.   .--.| | .---.  _ .--. 
+#       \ \/  \/ // .'`\ \/ .'`\ \/ /'`\' | ( (`\]    | |   _ `'_\ : [ `.-. |/ /'`\' | [  | [ `.-. | / /'`\;   | |\  /| | [  | | | [ `/'`\]/ /'`\' |/ /__\\[ `/'`\]                                                             
+#        \  /\  / | \__. || \__. || \__/  |  `'.'.   _| |__/ |// | |, | | | || \__/  |  | |  | | | | \ \._//  _| |_\/_| |_ | \_/ |, | |    | \__/  || \__., | |     
+#         \/  \/   '.__.'  '.__.'  '.__.;__][\__) ) |________|\'-;__/[___||__]'.__.;__][___][___||__].',__`  |_____||_____|'.__.'_/[___]    '.__.;__]'.__.'[___]                                                        
+#                                                                                                   ( ( __))                                                                                                                                             
+#                                                 .........                                          
+#                                              -%%%%%%%%%%%%+.                                       
+#                                             :%%%%%%%%%%%%%#+.                                      
+#                                            .*%%%%%%%%%%%%%%%-.                                     
+#                                            #%%%%%%%%%%%%%%%%%:                                     
+#                                           .::=#%%%%%%%%%%#=::..                                    
+#                                      .=*#%**:...       .....+*%%**:.                               
+#                                   ..+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#:                              
+#                                       .:+*%%%%%%%%%%%%%%%%%%%%#+=..                                
+#                                          :%*   ..:-===:..   .%#.                                   
+#                                          :%*....            .%#.                                   
+#                                          .#%:%..           .%%:                                    
+#                                          .:%%-%-. ...      +%+                                     
+#                                            :%%*-%*=..   .:%%=.                                     
+#                                          .-#%-%%%++--=+#%%+.                                       
+#                                       .=%%%-. ..-+*##**+....                                       
+#                                     .-%%%%#                                                        
+#                                   .:%%%%%...                                                       
+#                                  .%%%%%:...                                                        
+#                                .#%%%%-..                                                           
+#                              .+%%%%+....                                                           
+#                              :-%%*....                                                             
+#                               .....                                                                
+                                     
+
+
+#Maybe Function system for changing locations.
+
 #FUNCTION The House
     #backpack is set to a DICTIONARY
 	#PRINT You Enter the House. What do you want to explore? Newline. 1. The Bedroom Newline. 2. The Living Room Newline. 3. The Basement Newline. 4. The Attic Newline. 5. The Kitchen Newline. 6. The loft. Newline. 7. Leave the house.
@@ -143,7 +182,7 @@
         #PRINT You: "Hello Frank" Frank: "Hello John, what can I help you with?"
         #Set frank_choice is set to INPUT 1. What do you know about the murder? 2. Have you seen any suspicious acitivty? 3. Nevermind.
         #IF frank_choice is set to 1
-            #PRINT I'm so sorry, your wife... its awful I'm so sorry John, I don't think theres anything I can do.
+            #PRINT I don't really know anything john.
         #ALSO IF frank_choice is set to 2
             #PRINT I saw man running around my fields, I tried chasing him out but he might be bakc again.
         #ELSE
@@ -155,7 +194,15 @@
     #ELSE
         #PRINT You leave the farm.
 
-
+#FUNCTION The Woods
+    #PRINT You enter the wodds following the man with the axe. Eventually you see him enter a shed.
+    #You see him take off his mask its the ARBY'S MANAGER, Jimmy Franderson. That makes sense, he is the leader of the crypts.
+    #PRINT "You: Jimmy Panderson you have the right to remain silent. Anything you say cna and will be used against you in later court."
+    #PRINT "Jimmy: I don't think so John"
+    #PRINT Jimmy lunges toward you with a Meat Slicer.
+    # Combat with Jimmy if his health reaches 0 you win and if your heaolth reaches 0 Jimmy wins and its game over
+    #If you win you knocked Jimmy out.
+    #The end, maybe more epilogue later but yeah.
         
         
         
