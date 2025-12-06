@@ -1,4 +1,3 @@
-#FUNCTION Combat maybe if needed
 
 #Woods landing missouri is the name of the town
 
@@ -33,7 +32,42 @@
 #                              :-%%*....                                                             
 #                               .....                                                                
                                      
+#FUNCTION Combat
 
+    #combat_active is set to True
+    #While combat_active is True
+        #PRINT Health: player health    Enemy health: enemy_health
+        #PRINT What do you want to do? 1. Punch 2. Use Item 3. Run
+
+        #combat_choice is set to INPUT 1-3
+
+        #IF combat_choice is set to 1
+            #Calculate player_damage based on strength and weapon
+            #Subtract player_damage from enemy_health
+            #PRINT You hit the enemy and did <player_damage> damage
+        #ALSO IF choice is set to 2
+            #PRINT What item do you want to use?
+            #Use item from dictionary backapck
+            #update player stats
+            #CONTINUE loop
+        #ALSO IF choice is set to 3
+            #random_escape equals 1
+            # PRINT You managed to escape!
+            #combat_active is set to FALSE
+            #RETURN "escape"
+        #ELSE
+        #    You failed to escape!
+        #enemy_damage is set to 50
+        #subtract enemy_damage from player_health
+        #PRINT Enemy did <enemy_damage? damage!
+        #IF player_health <= 0
+            #PRINT You died.
+            #combat_active is set to False
+            #RETURN "player_dead"
+        #IF enemy_health <= 0
+            #PRINT You defeated the enemy!
+            #combat_active is set to false
+            #RETURN "enemy_dead"
 
 #Maybe Function system for changing locations.
 
