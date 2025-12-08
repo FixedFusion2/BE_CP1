@@ -31,7 +31,15 @@
 #                              .+%%%%+....                                                           
 #                              :-%%*....                                                             
 #                               .....                                                                
-                                     
+#FUNCTION Location switchers
+def locater():
+    print("Where in Woods Landing do you want to go next?")
+    print("1. The House\n2. The Police Station\n3. The Hotel\n4. David's bar\n5. Bill's Diner\n6. Smith's Supermarket\n7. Arby's\n8. Frank's Farm\n9. The Woods")
+    main_location = input("Typer 1-9 to determine where to go: ")
+    if main_location == "1":
+        the_house()
+    if main_location == "2":
+        police_station()                      
 #FUNCTION Combat
 
     #combat_active is set to True
@@ -72,27 +80,61 @@
 #Maybe Function system for changing locations.
 
 #FUNCTION The House
+def the_house():
     #backpack is set to a DICTIONARY
+    backpack = {}
 	#PRINT You Enter the House. What do you want to explore? Newline. 1. The Bedroom Newline. 2. The Living Room Newline. 3. The Basement Newline. 4. The Attic Newline. 5. The Kitchen Newline. 6. The loft. Newline. 7. Leave the house.
-	#house_location is Set to INPUT type 1-7 to decide where to look.
-	#IF house_location is set to 1
-		#PRINT You explore the bedroom. Newline You find a baseball bat. Newline. Baseball bat added to backpack.
+    # #house_location is Set to INPUT type 1-7 to decide where to look.
+    print("You Enter the House. What do you want to explore?")
+    while True:
+        print("\n1. The Bedroom \n2. The Living Room \n3. The Basement \n4. The Attic\n5. The Kitchen \n6. The loft. \n7. Leave the house.")
+        house_location = input("Type 1-7, to decide where to look: ")
+        #IF house_location is set to 1
+        if house_location == "1":
+            #PRINT You explore the bedroom. Newline You find a baseball bat. Newline. Baseball bat added to backpack.
+            print("You explore the bedroom.\nYou find a baseball bat.\nBaseball bat added to backpack")
+            backpack["baseball-bat"] = 30
+            continue
+
 	#ALSO IF house_location is set to 2
+        elif house_location == "2":
 		#PRINT You explore the living room, the scene of the crime. Newline The murder victim is still on the floor. Newline. You find a clue next to the murder victim. Newline. A crumpled piece of paper is in the pocket of the victim. It's a message from the local gang. Newline Its says: *You better watch out, you know what you did. - The Crypts.* Newline. Clue added to backpack. Newline. “She was involved with the Crypts?”
+            print("You explore the living room, the scene of the crime.\nThe murder victim is still on the floor.\nYou find a clue next to the murder victim.\nA crumpled piece of paper is in the pocket of the victim. \nIt's a message from the local gang.\nIts says: *You better watch out, you know what you did. - The Crypts.*\n“She was involved with the Crypts?\nClue1 added to backpack.”")
+            backpack["Clue1"] = "*You better watch out, you know what you did. - The Crypts.*"
+            continue
 		#PRINT Clue added to backpack.
 	#ALSO IF house_location is set to 3
+        elif house_location == "3":
 		#PRINT You explore the basement. There are cardboard boxes everywhere. There is a medpack on the floor. Newline Medpack added to backpack.
+            print("You explore the basement.\nThere are cardboard boxes everywhere.\nThere is a medpack on the floor.\nMedpack added to backpack.")
+            backpack["Medpack"] = 50
+            continue
 	#ALSO IF house_location is set to 4
+        elif house_location == "4":
 		#PRINT You explore the attic. It's very dusty up here. Newline You find a box with a bunch of drugs in plastic bags. Newline “She must’ve been involved with the Crypts.”
+            print("You explore the attic. It's very dusty up here.\nYou find a box with a bunch of drugs in plastic bags.\n“She must’ve been involved with the Crypts.”")
+            continue
 	#ALSO IF house_location is set to 5
+        elif house_location == "5":
 		#PRINT You explore the kitchen. You go to the fridge and find coffee. Newline Coffee added to the backpack.
+            print("You explore the kitchen. You go to the fridge and find coffee.\nCoffee added to the backpack.")
+            backpack["Coffee"] = 15
 	#ALSO IF house_location is set to 6
+        elif house_location == "6":
 		#PRINT You explore the loft. Nothing is here.
+            print("You explore the loft. Nothing is here.")
 	#ELSE
+        else:
 		#PRINT You leave the house.
+            print("You leave the house.")
+            break
+            #Call Locations functions
+    locater()
 
 #FUNCTION Police Station
+def police_station():
 	#PRINT You enter the Police Station. Where do you want to go? Newline 1. Your office. Newline 2. The Armory. Newline 3. The cells. Newline 4. The Interrogation rooms. Newline 5. Leave the police station.
+    print("This is a police station this is temporay code to show the police station function.")
     #police_location is set to INPUT type 1-5 to decide where to go to.
     #IF police_location is set to 1
         #PRINT You head to your office. There isn't much here.
@@ -238,5 +280,5 @@
     #If you win you knocked Jimmy out.
     #The end, maybe more epilogue later but yeah.
         
-        
+locater()
         
