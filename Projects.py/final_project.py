@@ -80,9 +80,10 @@ def locater():
 #Maybe Function system for changing locations.
 
 #FUNCTION The House
+#backpack is set to a DICTIONARY
+backpack = {}
 def the_house():
-    #backpack is set to a DICTIONARY
-    backpack = {}
+
 	#PRINT You Enter the House. What do you want to explore? Newline. 1. The Bedroom Newline. 2. The Living Room Newline. 3. The Basement Newline. 4. The Attic Newline. 5. The Kitchen Newline. 6. The loft. Newline. 7. Leave the house.
     # #house_location is Set to INPUT type 1-7 to decide where to look.
     print("You Enter the House. What do you want to explore?")
@@ -92,37 +93,54 @@ def the_house():
         #IF house_location is set to 1
         if house_location == "1":
             #PRINT You explore the bedroom. Newline You find a baseball bat. Newline. Baseball bat added to backpack.
-            print("You explore the bedroom.\nYou find a baseball bat.\nBaseball bat added to backpack")
-            backpack["baseball-bat"] = 30
-            continue
-
+            if "baseball-bat" in backpack.keys():
+                print("You've already been here, there is nothing here.")
+                continue
+            else:
+                print("You explore the bedroom.\nYou find a baseball bat.\nBaseball bat added to backpack")
+                backpack["baseball-bat"] = 30
+                continue
 	#ALSO IF house_location is set to 2
         elif house_location == "2":
 		#PRINT You explore the living room, the scene of the crime. Newline The murder victim is still on the floor. Newline. You find a clue next to the murder victim. Newline. A crumpled piece of paper is in the pocket of the victim. It's a message from the local gang. Newline Its says: *You better watch out, you know what you did. - The Crypts.* Newline. Clue added to backpack. Newline. “She was involved with the Crypts?”
-            print("You explore the living room, the scene of the crime.\nThe murder victim is still on the floor.\nYou find a clue next to the murder victim.\nA crumpled piece of paper is in the pocket of the victim. \nIt's a message from the local gang.\nIts says: *You better watch out, you know what you did. - The Crypts.*\n“She was involved with the Crypts?\nClue1 added to backpack.”")
-            backpack["Clue1"] = "*You better watch out, you know what you did. - The Crypts.*"
-            continue
+            if "Clue1" in backpack.keys():
+                print("You've already been here, there is nothing here.")
+                continue
+            else:
+                print("You explore the living room, the scene of the crime.\nThe murder victim is still on the floor.\nYou find a clue next to the murder victim.\nA crumpled piece of paper is in the pocket of the victim. \nIt's a message from the local gang.\nIts says: *You better watch out, you know what you did. - The Crypts.*\n“She was involved with the Crypts?\nClue1 added to backpack.”")
+                backpack["Clue1"] = "*You better watch out, you know what you did. - The Crypts.*"
+                continue
 		#PRINT Clue added to backpack.
 	#ALSO IF house_location is set to 3
         elif house_location == "3":
 		#PRINT You explore the basement. There are cardboard boxes everywhere. There is a medpack on the floor. Newline Medpack added to backpack.
-            print("You explore the basement.\nThere are cardboard boxes everywhere.\nThere is a medpack on the floor.\nMedpack added to backpack.")
-            backpack["Medpack"] = 50
-            continue
+            if "Medpack" in backpack.keys():
+                print("You've already been here, there is nothing here.")
+                continue
+            else:
+                print("You explore the basement.\nThere are cardboard boxes everywhere.\nThere is a medpack on the floor.\nMedpack added to backpack.")
+                backpack["Medpack"] = 50
+                continue
 	#ALSO IF house_location is set to 4
         elif house_location == "4":
-		#PRINT You explore the attic. It's very dusty up here. Newline You find a box with a bunch of drugs in plastic bags. Newline “She must’ve been involved with the Crypts.”
-            print("You explore the attic. It's very dusty up here.\nYou find a box with a bunch of drugs in plastic bags.\n“She must’ve been involved with the Crypts.”")
+		#PRINT You explore the attic. It's very dusty up here.
+            print("You explore the attic. It's very dusty up here.\nThere are old boxes everywhere")
             continue
 	#ALSO IF house_location is set to 5
         elif house_location == "5":
 		#PRINT You explore the kitchen. You go to the fridge and find coffee. Newline Coffee added to the backpack.
-            print("You explore the kitchen. You go to the fridge and find coffee.\nCoffee added to the backpack.")
-            backpack["Coffee"] = 15
+            if "Coffee" in backpack.keys():
+                print("You've already been here, there is nothing here.")
+                continue
+            else:
+                print("You explore the kitchen. You go to the fridge and find coffee.\nCoffee added to the backpack.")
+                backpack["Coffee"] = 15
+                continue
 	#ALSO IF house_location is set to 6
         elif house_location == "6":
 		#PRINT You explore the loft. Nothing is here.
             print("You explore the loft. Nothing is here.")
+            continue
 	#ELSE
         else:
 		#PRINT You leave the house.
@@ -133,27 +151,66 @@ def the_house():
 
 #FUNCTION Police Station
 def police_station():
-	#PRINT You enter the Police Station. Where do you want to go? Newline 1. Your office. Newline 2. The Armory. Newline 3. The cells. Newline 4. The Interrogation rooms. Newline 5. Leave the police station.
-    print("This is a police station this is temporay code to show the police station function.")
-    #police_location is set to INPUT type 1-5 to decide where to go to.
-    #IF police_location is set to 1
-        #PRINT You head to your office. There isn't much here.
-    #ALSO IF police_location is set to 2
-        #PRINT You head to the armory. You see a pistol. Pistol added to backpack. You see a medpack. Medpack added to beckpack. You see handcuffs. Handcuffs added to backpack.
+        #PRINT You enter the Police Station. Where do you want to go? Newline 1. Your office. Newline 2. The Armory. Newline 3. The cells. Newline 4. The Interrogation rooms. Newline 5. Leave the police station.
+        print("You enter the Police Station. Where do you want to go?\n1. Your office.\n2. The Armory.\n 3. The cells.\n4. The Interrogation rooms.\n5. Leave the police station.")
+        while True:
+            #police_location is set to INPUT type 1-5 to decide where to go to.
+            police_location = input("Type 1-5 to decide where to go.")
+            #IF police_location is set to 1
+            if police_location == "1":
+                #PRINT You head to your office. There isn't much here.
+                print("You enter to your office. There isn't much here.")
+                continue
+            #ALSO IF police_location is set to 2
+            elif police_location == "2":
+                #PRINT You head to the armory. You see a pistol. Pistol added to backpack. You see a medpack. Medpack added to beckpack.
+                if 'Pistol' in backpack.keys() and 'Medpack' in backpack.keys():
+                    print("You've already been here and gotten the pistol and Medpack.")
+                    continue
+                else:
+                    print("You enter to the armory. You see a pistol.\nPistol added to backpack. ")
+                    backpack["Pistol"] = 50
+                    print("You see a medpack. Medpack added to beckpack.")
+                    backpack['Medpack'] = 50
+                    continue
     #ALSO IF police_location is set to 3
+            if police_location == "3":
         #PRINT You head to the cells. Newline. The Prisonmates are sleeping.
-    #ALSO IF police_location is set to 4.
+                print("You Enter the cells\nThe Prisonmates are sleeping.")
+                continue
+    #ALSO IF police_location is set to 4
+            if police_location == "4":
         #PRINT You head to the interrogation rooms. No one is here.
+                print("You enter the interrogation rooms. Noe one is here.")
+                continue
     #ELSE
+            else:
         #PRINT You leave the police station
-
+                print("You leave the police station.")
+                break
+        locater()
 #FUNCTION The Hotel
+def the_hotel():
     #PRINT You enter the Hotel. You are greeted by a police officer telling you they found the room of the murder in room 201. Where do you want to go? Newline. 1. Room 201. Newline. 2. The Front Desk .Newline. 3. The Laundry Room. Newline. 4. The Janitors Room.Newline. 5. Leave the Hotel
+    print("You enter the Hotel. You are greeted by a police officer telling you they found the room of the murder in room 201. Where do you want to go?\n1. Room 201.\n2. The Front Desk\n3. The Laundry Room.\n4. The Janitors Room.\n5. Leave the Hotel")
+    while True:
     #hotel_location is set to INPUT type 1-5 to decide where to go to.
+        hotel_location = input("Type 1-5 to decide where to go.")
     #IF hotel_location is set to 1
+        if hotel_location == "1":
         #PRINT You head to room 201, with the other police officer. You enter the room and find blah blah blah.
+            print("You head to room 201, with the other police officer.\nYou enter the room and see a mess, overturned tables, writing on the walls, and pictures of the victim on the walls.")
+            continue
     #IF hotel_location is set to 2
+        if hotel_location == "2":
         #PRINT You head to the Front Desk, a lady greets you and hands you a record of the guests. Guest Record added to backpack.
+            if 'Guest Record' in backpack.keys():
+                print("You've already been here and gotten the Guest Record.")
+                continue
+            else:
+                print("You head to the Front Desk, a lady greets you and hands you a record of the guests.\n Guest Record added to packback")
+                backpack["Guest Record"] = "A big record of the guests fill this in later along with a way to view the backpack."
+                continue
     #IF hotel_location is set to 3
         #PRINT You enter the Laundry room. You find a towel. Towel added to backpack.
     #IF hotel_location is set to 4.
