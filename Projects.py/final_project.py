@@ -38,8 +38,10 @@ def locater():
     main_location = input("Typer 1-9 to determine where to go: ")
     if main_location == "1":
         the_house()
-    if main_location == "2":
-        police_station()                      
+    elif main_location == "2":
+        police_station()
+    elif main_location == "3":
+        the_hotel()
 #FUNCTION Combat
 
     #combat_active is set to True
@@ -212,44 +214,114 @@ def the_hotel():
                 backpack["Guest Record"] = "A big record of the guests fill this in later along with a way to view the backpack."
                 continue
     #IF hotel_location is set to 3
+        if hotel_location == "3":
         #PRINT You enter the Laundry room. You find a towel. Towel added to backpack.
+            if "Towel" in backpack.keys():
+                print("You've already been here. Theres nothing here.")
+                continue
+            else:
+                print("You enter the Laundry room. You find a towel. Towel added to backpack.")
+                backpack["Towel"] = 2
+                continue
     #IF hotel_location is set to 4.
+        if hotel_location == "4":
         #PRINT You enter the Janitors room, you see cleaning gear all around, as you walk around you notice a single peice of ripped up paper in a trash can and find a clue. It looks likes a paper from a journal. It says, *I'm meeting up with the Crypts at David's to discuss the elimination of _______*. Clue added to backpack.
+            if "Clue2" in backpack.keys():
+                print("You've already been here, and gotten the clue.")
+                continue
+            else:
+                print("You enter the Janitors room.\nYou see cleaning gear all around, as you walk around you notice a single peice of ripped up paper in a trash can and find a clue.\nIt looks likes a paper from a journal.\nIt says, *I'm meeting up with the Crypts at David's to discuss the elimination of _______*. Clue added to backpack.")
+                backpack["Clue2"] = "*I'm meeting up with the Crypts at David's to discuss the elimination of _______*"
+                continue    
     #ELSE
+        else:
         #PRINT You leave the Hotel.
+            print("You leave the Hotel.")
+            break
+    locater()
 
 #FUNCTION David's Bar
-    #PRINT You enter David's Bar. David greets you and gives you a beer. Beer added to backpack. who would you like to go to talk to at the bar, or where would you like to go? Newline. 1. Talk to David.Newline. 2. Talk to Stranger in back.Newline. 3. Talk to Henry at the Pool table.Newline. 4. Explore the outside back of the Bar.Newline. 5. Leave the bar.
+def davids_bar():
+    #PRINT You enter David's Bar. David greets you and gives you a beer. Beer added to backpack. who would you like to go to talk to at the bar, or where would you like to go? Newline. 1. Talk to David.Newline. 2. Talk to Stranger in back.Newline. 3. Talk to Henry at the Pool table.Newline. 4. Explore the outside back of the Bar.Newline. 5. sk for a beer. 6. Leave the bar.
+    print("\nWho would you like to go to talk to at the bar, or where would you like to go?\n1. Talk to David.\n2. Talk to Stranger in back\n3. Talk to Henry at the Pool table.\n4. Explore the outside back of the Bar.\n5. Leave the bar.")
+    while True:
     #bar_location is set to INPUT type 1-5 to decide where or who to go to.
+        bar_location = input("Type 1-6 to decide where or who to go.")
     #IF bar_location is set to 1
-        #PRINT David Greets you. David: "Hello John, how can I help you?"
-        #david_choice is set to INPUT 1. "Tell me about the Crypts."" 2."What do you know about the murder?" 3."Nevermind."
-        #IF david_choice is set to 1
-            #PRINT David: "I saw some sketchy guys out back, you should go ask them."
-        #ALSO IF david_choice is set to 2
-            #PRINT David: "I don't really know anything but, I've heard rumors. Talk to the guy in the back."
-        #ELSE:
-            #PRINT David: "Alright."
+        if bar_location == "1":
+            while True:
+            #PRINT David Greets you. David: "Hello John, how can I help you?"
+                print("David Greets you. David: *Hello John, how can I help you?*")
+            #david_choice is set to INPUT 1. "Tell me about the Crypts."" 2."What do you know about the murder?" 3."Nevermind."
+                david_choice = input("1. *Tell me about the Crypts.*\n2. *What do you know about the murder?*\n3.*Nevermind.*")
+            #IF david_choice is set to 1
+                if david_choice == "1":
+                #PRINT David: "I saw some sketchy guys out back, you should go ask them."
+                    print("David: *I saw some sketchy guys out back, you could go ask them.")
+                    continue
+            #ALSO IF david_choice is set to 2
+                elif david_choice == "2":
+                #PRINT David: "I don't really know anything but, I've heard rumors. Talk to the guy in the back."
+                    print("David: *I don't really know anything but, I've heard rumors. Talk to the guy in the back.*")
+                    continue
+            #ELSE:
+                else:
+                #PRINT David: "Alright."
+                    print("David: *Alright, come ask me again if you need anything else.*")
+                    break
+            continue
     #IF bar_location is set to 2
+        if bar_location == "2":
         #PRINT Stranger: "What do you want?"
+            print("Stranger: *What do you want?")
+            while True:
         #stranger_choice is set to INPUT 1. "I'm here for the crypts." 2. "What do you know about the murder?" 3. "Nevermind."
+                stranger_choice = input("1. *I'm here for the cyrpts.*\n2. *What do you know about the murder?*\n3. *Nevermind*")
         #IF stranger_choice is set to 1
+                if stranger_choice == "1":
             #PRINT Stranger: "I heard they're are having a meeting out back, they're selling the goods."
+                    print("Stranger: *I heard they're are having a meeting out back, they're selling the goods.")
+                    continue
         #ALSO IF stranger_choice is set to 2
+                if stranger_choice == "2":
             #PRINT Stranger: "I don't know anything, but I saw some guy running around franks farm."
+                    print("I don't know anything, but I saw some guy running around franks farm. ")
+                    continue
         #ELSE stranger_choice is set to 3
+                else:
             #PRINT Stranger: "Go away then."
+                    print("Stranger: *Go away then.*")
+                    break
+            continue
     #IF bar_location is set to 3
+        if bar_location == "3":
         #PRINT Henry: "Hey john, whats up?"
+            print("Henry: *Hey John, whats up?")
+            while True:
         #henry_choice is set to INPUT 1. "What do you know about the murder?" 2. "Have you seen any suspicious activity?" 3."Nevermind."
+                henry_choice = input("1. *What do you know about the murder?*\n2. *Have you seen any suspicious activity?*\n3. *Nevermind*")
         #IF henry_choice is set to 1
+                if henry_choice == "1":
             #PRINT Henry: "Honestly nothing, Its awful what happened though."
+                    print("Henry: *Honestly nothing, its awful what happened though.*")
+                    continue
         #IF henry_choice is set to 2
+                if henry_choice == "2":
             #PRINT Henry: "I was walking around the forest with my dog and I saw a guy run into a shed about 200ft away."
+                    print("Henry: *I was walking around the woods with my dog and I saw a guy run back into a shed about 200ft away.*")
+                    continue
         #IF henry-choice is set to 3
+                if henry_choice == "3":
             #PRINT Henry: "Okay."
+                    print("Okay.")
+                    break
+            continue
     #IF bar_location is set to 4
+        if bar_location == "4":
         #PRINT You explore the back and find 3 guys huddled around a dumpster.
+            print("You explore the back and find 3 guys huddled around a dumpster.")
+            print("A stranger approaches.\nStranger: *What are you doing here?*")
+            continue
         #PRINT A stranger approaches. Stranger: "What are you doing here?"
         #Have combat fight with the items in your inventory.
         #If you win the fight
