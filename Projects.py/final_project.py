@@ -1,4 +1,11 @@
-
+import random
+#backpack is set to a DICTIONARY
+backpack = {}
+#enemy names and health dicitonary
+enemy = {"Thug":{"name":"Unknown","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed-steroids": 30}}}
+player = {"name": "John", "health": 100, "strength": 10, "speed": 20, "backpack":backpack}
+jimmy = {"name": "Jimmy", "Health": 120, "attack": "30", "description": "The leader of the criminal gang, The Crypts, and the local Arby's Manager.", "loot": "meat slicer"}
+diner_enemy = {"name": "Uknown", "Health": 50, "description": "A thug outisde the diner guarding a dumpster.", "loot":{"pipe": 30, "strength_drugs": 1, "clue": "Lets meet up with J in the w----"}}
 #Woods landing missouri is the name of the town
 
 #     ____      ____                     __          _____                          __   _                    ____    ____                        __                    
@@ -16,7 +23,7 @@
 #                                           .::=#%%%%%%%%%%#=::..                                    
 #                                      .=*#%**:...       .....+*%%**:.                               
 #                                   ..+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#:                              
-#                                       .:+*%%%%%%%%%%%%%%%%%%%%#+=..                                
+#                                       .:+*%%%%%%%%%%%%%%%%%%%%#+=..                                                           
 #                                          :%*   ..:-===:..   .%#.                                   
 #                                          :%*....            .%#.                                   
 #                                          .#%:%..           .%%:                                    
@@ -32,7 +39,7 @@
 #                              :-%%*....                                                             
 #                               .....                                                                
 #FUNCTION Location switchers
-def locater():
+def locater(player, enemy):
     print("Where in Woods Landing do you want to go next?")
     print("1. The House\n2. The Police Station\n3. The Hotel\n4. David's bar\n5. Bill's Diner\n6. Smith's Supermarket\n7. Arby's\n8. Frank's Farm\n9. The Woods")
     main_location = input("Typer 1-9 to determine where to go: ")
@@ -42,48 +49,85 @@ def locater():
         police_station()
     elif main_location == "3":
         the_hotel()
+#Item Slection
+def use_item():
+    backpack = player["backpack"]
+    for item, amount in backpack.items():
+        print(f"-{item}:{amount}")
+    choice = input("Choose an item to use: ").lower().strip()
+    #Medpacks
+    if choice == "medpack" or choice == "medpacks":
+        if backpack["medpacks"] > 0:
+            player["health"] += 25
+            backpack["medpacks"] -= 1
+            print("You use a medpack and heal 25 HP.")
+        else:
+            print("You have no medpacks.")
+    #Strength
+    elif choice == "strength_drug" or choice == "strength_drugs":
+        if backpack["strength_drugs"] > 0:
+            backpack["strength_drugs"] -=1
+            print("You take a strength drug. Punch damage increased.")
+        else:
+            print("You have none.")
+    #Speed
+    elif choice == "speed drug" or choice == "speed_drugs":
+        if backpack["speed_drugs"] > 0:
+            backpack["speed_drugs"] -= 1
+            print("You take a speed drug. Escape chance boosted.")
+        else:
+            print("you have none.")
+    else:
+        print("You can't use that item.")
+
 #FUNCTION Combat
+def combat():
+    print(f"A{enemy['name']} attacks you.")
+    print(f"{enemy["description"]}")
+    enemy_hp = enemy["health"]
+    #Combat loop
+    while player["health"] > 0 and enemy_hp > 0:
+        print(f"\nYour HP: {player["health"]} | {enemy['name']} HP: {enemy_hp}")
+        print("Actions:\n1. Punch\n2. Run\n3. Use item")
+        attack = input("Choose what do to. Type 1-3: ")
+        #Punch
+        if attack == "1":
+            damage = 5 + player["backpack"]["strength_drugs"] * 3
+            print(f"You punch the {enemy['name']} and do {damage}!")
+            enemy_hp -= damage
+        #Run
+        elif attack == "2":
+            base_escape = 30
+            escape_chance = base_escape + (player["backpack"]["speed_drugs"] * 15)
+            if random.randint(1,100) <= escape_chance:
+                print("You escaped.")
+                return "escaped"
+            else:
+                print(f"You try to run but the {enemy['name']} stops you.")
+        #Use Item
+        elif attack == "3":
+            use_item(player)
+        else:
+            print("Invalid Choice.")
+    #Enemy turn befroe chicking if player died.
+            if enemy_hp > 0:
+                dmg = enemy["attack"]
+                print(f"The {enemy['name']} does {dmg}.")
+                player["health"] -= dmg
+        #Outcome
+    if player["health"] <= 0:
+        print("You died.")
+        return "dead"
+    else:
+        print(f"You defeated the {enemy['name']}.")
+        return "victory"
 
-    #combat_active is set to True
-    #While combat_active is True
-        #PRINT Health: player health    Enemy health: enemy_health
-        #PRINT What do you want to do? 1. Punch 2. Use Item 3. Run
 
-        #combat_choice is set to INPUT 1-3
 
-        #IF combat_choice is set to 1
-            #Calculate player_damage based on strength and weapon
-            #Subtract player_damage from enemy_health
-            #PRINT You hit the enemy and did <player_damage> damage
-        #ALSO IF choice is set to 2
-            #PRINT What item do you want to use?
-            #Use item from dictionary backapck
-            #update player stats
-            #CONTINUE loop
-        #ALSO IF choice is set to 3
-            #random_escape equals 1
-            # PRINT You managed to escape!
-            #combat_active is set to FALSE
-            #RETURN "escape"
-        #ELSE
-        #    You failed to escape!
-        #enemy_damage is set to 50
-        #subtract enemy_damage from player_health
-        #PRINT Enemy did <enemy_damage? damage!
-        #IF player_health <= 0
-            #PRINT You died.
-            #combat_active is set to False
-            #RETURN "player_dead"
-        #IF enemy_health <= 0
-            #PRINT You defeated the enemy!
-            #combat_active is set to false
-            #RETURN "enemy_dead"
 
 #Maybe Function system for changing locations.
 
 #FUNCTION The House
-#backpack is set to a DICTIONARY
-backpack = {}
 def the_house():
 
 	#PRINT You Enter the House. What do you want to explore? Newline. 1. The Bedroom Newline. 2. The Living Room Newline. 3. The Basement Newline. 4. The Attic Newline. 5. The Kitchen Newline. 6. The loft. Newline. 7. Leave the house.
@@ -330,9 +374,20 @@ def davids_bar():
         #PRINT You explore the back and find 3 guys huddled around a dumpster.
             print("You explore the back and find 3 guys huddled around a dumpster.")
             print("A stranger approaches.\nStranger: *What are you doing here?*")
-            continue
         #PRINT A stranger approaches. Stranger: "What are you doing here?"
         #Have combat fight with the items in your inventory.
+            result = combat(player,enemy)
+            if result == "victory":
+                print("The strangers run away and drop some pipes and speed steroids.")
+                backpack["speed_drugs"] = backpack.get("speed_drugs", 0) + 1
+                backpack["pipes"] = backpack.get("clue_paper", 0) + 1
+                continue
+            elif result == "dead":
+                print("You have died. Game over.")
+                return
+            elif result == "escaped":
+                print("The strangers run away.")
+                continue
         #If you win the fight
             #PRINT The strangers run away and drup a peice of paper, and 1 bags of speed steroids, and the pipes tehy were fighting you with.
     #ELSE
@@ -409,9 +464,23 @@ def bill_diner():
         elif diner_location == "3":
             #PRINT You enter outback of the diner, there is a group of guys hanging around a dumpster.
             print("You enter outback of the diner, there is a group of strangers hanging around a dumpster.")
-            continue
+            print("A stranger approaches.\nStranger: *hey, what are you doing here?!*")
+
             #PRINT Stranger: "Hey what are you do here?!"
             #have a combat fight with items in your inventory if you win you get streength steroid and a clue about the guys in the woods
+            result = combat(player,diner_enemy)
+            if result == "victory":
+                print("The strangers run away dropping a clue, strength steroids, and the pipes they fought with.")
+                backpack["strength_drugs"] = backpack.get("strength_drugs", 0) + 1
+                backpack["pipe"] = backpack.get("pipe", 0) + 1
+                backpack["clue"] = backpack.get("clue, 0") + 1
+                continue
+            elif result == "dedd":
+                print("You have died. Game over.")
+                return
+            elif result == "escaped":
+                print("You run away from the strangers. You managed to escape.")
+                continue    
         #IF diner_location is set to 4
         else:
             #PRINT you leave the bar
@@ -454,45 +523,89 @@ def arbys():
     print("You wak to Arby's.")
     while True:
         #set arby_choice to INPUT What do you want to do? 1. Grab a Sandwhich 2. Leave
-        arby_choice = input('What would you like to do?\n1. Grab a Sandwhich\n2. Leave.')
+        arby_choice = input('What would you like to do?\n1. Grab a Sandwhich\n2. Leave: ')
         #IF arby_choice is set to 1
         if arby_choice == "1":
             if "Roast Beef Sandwhich" in backpack.keys():
                 print("I've already ordered a sandwhich, I need to get back to work.")
                 continue
             #PRINT Arby's Employee: "Here you go that will be 7.59", You: "Prices these days are ridiculous." Roast Beef Sandwhich added to backpack.
-            print("Arby's Employee: *Here you go that will be 7.59*, You: *Prices these days are ridiculous.*\nRoast Beef Sandwhich added to backpack.")
-            backpack["Roast Beef Sandwhich"] = 25
+            else:
+                print("Arby's Employee: *Here you go that will be 7.59*, You: *Prices these days are ridiculous.*\nRoast Beef Sandwhich added to backpack.")
+                backpack["Roast Beef Sandwhich"] = 25
+            continue
+
         #ALSO IF arby_choice is set to 2.
+        elif arby_choice == "2": 
             #PRINT You leave Arby's
+            print("You leave Arby's.")
+            break
+    locater()
 
 #FUNCTION Frank's Farm
+def franks_farm():
     #PRINT You walk in to Frank Farm.
+    print("You walk into Frank's Farm.")
     #farm_location is set to INPUT What do you do? 1. Talk to Frank. 2. Explore The Fields 3. Explore the shed. 4. Leave The Farm
-    #IF farm_location is set to 1
-        #PRINT You: "Hello Frank" Frank: "Hello John, what can I help you with?"
-        #Set frank_choice is set to INPUT 1. What do you know about the murder? 2. Have you seen any suspicious acitivty? 3. Nevermind.
-        #IF frank_choice is set to 1
-            #PRINT I don't really know anything john.
-        #ALSO IF frank_choice is set to 2
-            #PRINT I saw man running around my fields, I tried chasing him out but he might be bakc again.
+    while True:
+        farm_location = input("What do you want to do?\n1. Talk to Frank. 2. Explore The Fields 3. Explore the shed. 4. Leave The Farm: ")
+        #IF farm_location is set to 1
+        if farm_location == "1":
+            #PRINT You: "Hello Frank" Frank: "Hello John, what can I help you with?"
+            print("You: *Hello Frank*, Frank: *Hello John, what can I help you with?*")
+            #Set frank_choice is set to INPUT 1. What do you know about the murder? 2. Have you seen any suspicious acitivty? 3. Nevermind.
+            while True:
+                frank_choice = input("*1.What do you know about the murder?*\n*2. have you seen any suspicious activity?*\n*3.Nevermind.*")
+                #IF frank_choice is set to 1
+                if frank_choice == "1":
+                    #PRINT I don't really know anything john
+                    print("Frank: *I don't really know anythign John.*")
+                    continue
+                #ALSO IF frank_choice is set to 2
+                elif frank_choice == "2":
+                    #PRINT I saw man running around my fields, I tried chasing him out but he might be bakc again.
+                    print("Frank: *I saw man running around my fields, I tried chasing him out but he might be back again...*")
+                    continue
+                #ELSE
+                else:
+                    #PRINT All right.
+                    print ("*Alright then.*")
+                    break
+            continue
+        #ALSO IF farm_location is set to 2
+        elif farm_location == "2":
+            #PRINT You see a man run into the woods with an axe in his hand, the murder weapon...
+            print("You see a man run into the woods with an axe in his hand, the murder weapon...")
+            continue
+        #ALSO IF farm_location is set to 3
+        elif farm_location == "3":
+            if "Pitchfork" in backpack.keys():
+                print("You've already been here adn gotten the pitchfork.")
+                continue
+            else:
+                #PRINT You find a pitchfork in the shed. Pitchfork added to backpack.
+                print("You find a pitchfork in the shed. Pitchfork added to backpack.")
+                backpack["Pitchfork"] = 30
+                continue
         #ELSE
-            #PRINT All right.
-    #ALSO IF farm_location is set to 2
-        #PRINT You see a man run into the woods with an axe in his hand, the murder weapon...
-    #ALSO IF farm_location is set to 3
-        #PRINT You find a pitchfork in the shed. Pitchfork added to backpack.
-    #ELSE
-        #PRINT You leave the farm.
+        else:
+            #PRINT You leave the farm.
+            print("You leave the farm.")
+            break
+    locater()
 
 #FUNCTION The Woods
+def the_woods():
     #PRINT You enter the wodds following the man with the axe. Eventually you see him enter a shed.
-    #You see him take off his mask its the ARBY'S MANAGER, Jimmy Franderson. That makes sense, he is the leader of the crypts.
+    print("You enter the woods following teh man with the axe. Eventually you see him enter a shed.")
+    #You see him take off his mask its the ARBY'S MANAGER, Jimmy Franderson. That makes sense, he is the leader of the crypts, thats why the Arby's was so empty when I was there. He was meeting with the crypts.
+    print("You see him take off his mask its the ARBY'S MANAGER, Jimmy Franderson.\nThat makes sense, he is the leader of the crypts, thats why the Arby's was so empty when I was there.\nHe was meeting with the crypts.")
     #PRINT "You: Jimmy Panderson you have the right to remain silent. Anything you say can and will be used against you in later court."
+    print("You: *Jimmy Panderson you have the right to remain silent.*\n*Anything you say can and will be used against you in later court.*")
     #PRINT "Jimmy: I don't think so John"
+    print("Jimmy: *I don't think so so John.*")
     #PRINT Jimmy lunges toward you with a Meat Slicer.
+    print("Jimmy lunges at ytou with a Meat Slicer.")
     # Combat with Jimmy if his health reaches 0 you win and if your heaolth reaches 0 Jimmy wins and its game over
     #If you win you knocked Jimmy out.
     #The end, maybe more epilogue later but yeah.
-        
-locater()        
