@@ -2,10 +2,12 @@ import random
 #backpack is set to a DICTIONARY
 backpack = {}
 #enemy names and health dicitonary
-enemy = {"Thug":{"name":"Unknown","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed-steroids": 30}}}
+enemy = {"name":"Unknown","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed-steroids": 30}}
 player = {"name": "John", "health": 100, "strength": 10, "speed": 20, "backpack":backpack}
 jimmy = {"name": "Jimmy", "Health": 120, "attack": "30", "description": "The leader of the criminal gang, The Crypts, and the local Arby's Manager.", "loot": "meat slicer"}
 diner_enemy = {"name": "Uknown", "Health": 50, "description": "A thug outisde the diner guarding a dumpster.", "loot":{"pipe": 30, "strength_drugs": 1, "clue": "Lets meet up with J in the w----"}}
+enemy2 = {"Thug":{"name":"Unknown","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30,"clue3":"Meet up in woods on ------."}}}
+
 #Woods landing missouri is the name of the town
 
 #     ____      ____                     __          _____                          __   _                    ____    ____                        __                    
@@ -39,16 +41,33 @@ diner_enemy = {"name": "Uknown", "Health": 50, "description": "A thug outisde th
 #                              :-%%*....                                                             
 #                               .....                                                                
 #FUNCTION Location switchers
-def locater(player, enemy):
-    print("Where in Woods Landing do you want to go next?")
-    print("1. The House\n2. The Police Station\n3. The Hotel\n4. David's bar\n5. Bill's Diner\n6. Smith's Supermarket\n7. Arby's\n8. Frank's Farm\n9. The Woods")
-    main_location = input("Typer 1-9 to determine where to go: ")
-    if main_location == "1":
-        the_house()
-    elif main_location == "2":
-        police_station()
-    elif main_location == "3":
-        the_hotel()
+def locater():
+    while True:
+        print("Where in Woods Landing do you want to go next?")
+        print("1. The House\n2. The Police Station\n3. The Hotel\n4. David's bar\n5. Bill's Diner\n6. Smith's Supermarket\n7. Arby's\n8. Frank's Farm\n9. The Woods")
+        main_location = input("Type i, to access inventory. Type 1-9 to determine where to go: ")
+        if main_location == "1":
+            the_house()
+        elif main_location == "2":
+            police_station()
+        elif main_location == "3":
+            the_hotel()
+        elif main_location == "4":
+            davids_bar()
+        elif main_location == "5":
+            bill_diner()
+        elif main_location == "6":
+            smith_market()
+        elif main_location == "7":
+            arbys()
+        elif main_location == "8":
+            franks_farm()
+        elif main_location == "9":
+            the_woods()
+        elif main_location == "i":
+            see_backpack()
+def see_backpack():
+    print(backpack)
 #Item Slection
 def use_item():
     backpack = player["backpack"]
@@ -81,7 +100,7 @@ def use_item():
         print("You can't use that item.")
 
 #FUNCTION Combat
-def combat():
+def combat(player,enemy):
     print(f"A{enemy['name']} attacks you.")
     print(f"{enemy["description"]}")
     enemy_hp = enemy["health"]
@@ -92,12 +111,22 @@ def combat():
         attack = input("Choose what do to. Type 1-3: ")
         #Punch
         if attack == "1":
-            damage = 5 + player["backpack"]["strength_drugs"] * 3
-            print(f"You punch the {enemy['name']} and do {damage}!")
-            enemy_hp -= damage
+            if "strength_drugs" not in backpack.keys():
+                damage = 5
+                enemy_hp -= damage
+            else:
+                damage = 5 + player["backpack"]["strength_drugs"] * 3
+                print(f"You punch the {enemy['name']} and do {damage}!")
+                enemy_hp -= damage
         #Run
         elif attack == "2":
             base_escape = 30
+            if "speed_drugs" not in backpack.keys():
+                escape_chance = random.randint(1,100)
+                if escape_chance >= random.randint(1,100)
+                    return"escaped"
+                else:
+                    
             escape_chance = base_escape + (player["backpack"]["speed_drugs"] * 15)
             if random.randint(1,100) <= escape_chance:
                 print("You escaped.")
@@ -290,7 +319,7 @@ def davids_bar():
     print("\nWho would you like to go to talk to at the bar, or where would you like to go?\n1. Talk to David.\n2. Talk to Stranger in back\n3. Talk to Henry at the Pool table.\n4. Explore the outside back of the Bar.\n5. Leave the bar.")
     while True:
     #bar_location is set to INPUT type 1-5 to decide where or who to go to.
-        bar_location = input("Type 1-6 to decide where or who to go: ")
+        bar_location = input("Type 1-5 to decide where or who to go: ")
     #IF bar_location is set to 1
         if bar_location == "1":
             while True:
@@ -374,6 +403,7 @@ def davids_bar():
         #PRINT You explore the back and find 3 guys huddled around a dumpster.
             print("You explore the back and find 3 guys huddled around a dumpster.")
             print("A stranger approaches.\nStranger: *What are you doing here?*")
+            combat(player,enemy)
         #PRINT A stranger approaches. Stranger: "What are you doing here?"
         #Have combat fight with the items in your inventory.
             result = combat(player,enemy)
@@ -464,7 +494,8 @@ def bill_diner():
         elif diner_location == "3":
             #PRINT You enter outback of the diner, there is a group of guys hanging around a dumpster.
             print("You enter outback of the diner, there is a group of strangers hanging around a dumpster.")
-            print("A stranger approaches.\nStranger: *hey, what are you doing here?!*")
+            print("A stranger approaches.\nStranger: *Hey, what are you doing here?!*")
+            combat()
 
             #PRINT Stranger: "Hey what are you do here?!"
             #have a combat fight with items in your inventory if you win you get streength steroid and a clue about the guys in the woods
@@ -473,9 +504,9 @@ def bill_diner():
                 print("The strangers run away dropping a clue, strength steroids, and the pipes they fought with.")
                 backpack["strength_drugs"] = backpack.get("strength_drugs", 0) + 1
                 backpack["pipe"] = backpack.get("pipe", 0) + 1
-                backpack["clue"] = backpack.get("clue, 0") + 1
+                backpack["clue"] = backpack.get("clue", 0) + 1
                 continue
-            elif result == "dedd":
+            elif result == "dead":
                 print("You have died. Game over.")
                 return
             elif result == "escaped":
@@ -499,6 +530,17 @@ def smith_market():
         #PRINT You attack the man
         print("You attack the man.")
         #Combat thing, maybe a function? if you win he drops a clue that talks about a meeting in the woods, and he runs away. If you lose you die.
+        result = combat(player, enemy2)
+        if result == "victory":
+            print("You defeat the stranger and he runs away dropping a clue.")
+            backpack["clue"] = backpack.get("clue3", 0) + 1
+            locater()
+        elif result == "dead":
+                print("You have died. Game over.")
+                return
+        elif result == "escaped":
+            print("You run away from the strangers. You managed to escape.")
+            locater()
     #IF action_choice is set to 2
     #Then go to locater()
         locater()
@@ -609,3 +651,10 @@ def the_woods():
     # Combat with Jimmy if his health reaches 0 you win and if your heaolth reaches 0 Jimmy wins and its game over
     #If you win you knocked Jimmy out.
     #The end, maybe more epilogue later but yeah.
+
+def start():
+    print("You get handed the case of the Woods landing murder.")
+    print("After driving for a while you reach woods landing.")
+    locater()
+
+start()
