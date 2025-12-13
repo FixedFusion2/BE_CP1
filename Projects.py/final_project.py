@@ -2,12 +2,12 @@ import random
 #backpack is set to a DICTIONARY
 backpack = {}
 #enemy names and health dicitonary
-enemy = {"name":"Unknown","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed-steroids": 30}}
+enemy = {"name":"Unknown Thug","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed-steroids": 30}}
 player = {"name": "John", "health": 100, "strength": 10, "speed": 20, "backpack":backpack}
 jimmy = {"name": "Jimmy", "Health": 120, "attack": "30", "description": "The leader of the criminal gang, The Crypts, and the local Arby's Manager.", "loot": "meat slicer"}
 diner_enemy = {"name": "Uknown", "Health": 50, "description": "A thug outisde the diner guarding a dumpster.", "loot":{"pipe": 30, "strength_drugs": 1, "clue": "Lets meet up with J in the w----"}}
-enemy2 = {"Thug":{"name":"Unknown","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30,"clue3":"Meet up in woods on ------."}}}
-
+enemy2 = {"Thug":{"name":"Unknown Thug","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30,"clue3":"Meet up in woods on ------."}}}
+weapons_damage = {"baseball-bat": 30, "Pistol": 40, "Pitchfork": 30, "pipe": 30}
 #Woods landing missouri is the name of the town
 
 #     ____      ____                     __          _____                          __   _                    ____    ____                        __                    
@@ -69,29 +69,32 @@ def locater():
 def see_backpack():
     print(backpack)
 #Item Slection
-def use_item():
+def use_item(player):
     backpack = player["backpack"]
+    if not backpack:
+        print("Your backpack is empty.")
+        return
     for item, amount in backpack.items():
-        print(f"-{item}:{amount}")
-    choice = input("Choose an item to use: ").lower().strip()
+        print(f"{item}:{amount}")
+    choice = input("Choose an item to use: ").strip().lower()
     #Medpacks
-    if choice == "medpack" or choice == "medpacks":
-        if backpack["medpacks"] > 0:
+    if choice == "medpack" and "Medpack" in backpack:
+        if backpack.get("Medpack", 0) > 0:
             player["health"] += 25
             backpack["medpacks"] -= 1
             print("You use a medpack and heal 25 HP.")
         else:
             print("You have no medpacks.")
     #Strength
-    elif choice == "strength_drug" or choice == "strength_drugs":
-        if backpack["strength_drugs"] > 0:
+    elif choice in ["strength_drugs", "strength_drug"] and "strength_drugs" in backpack:
+        if backpack.get("strength_drugs", 0) > 0:
             backpack["strength_drugs"] -=1
             print("You take a strength drug. Punch damage increased.")
         else:
             print("You have none.")
     #Speed
-    elif choice == "speed drug" or choice == "speed_drugs":
-        if backpack["speed_drugs"] > 0:
+    elif choice in ["speed_drugs", "speed_drug"] and "speed_drugs" in backpack:
+        if backpack.get("speed_drugs", 0) > 0:
             backpack["speed_drugs"] -= 1
             print("You take a speed drug. Escape chance boosted.")
         else:
@@ -101,33 +104,23 @@ def use_item():
 
 #FUNCTION Combat
 def combat(player,enemy):
-    print(f"A{enemy['name']} attacks you.")
-    print(f"{enemy["description"]}")
-    enemy_hp = enemy["health"]
+    print(f"A {enemy['name']} attacks you.")
+    print({enemy["description"]})
+    enemy_hp = enemy.get("health", enemy.get("Health"))
     #Combat loop
     while player["health"] > 0 and enemy_hp > 0:
         print(f"\nYour HP: {player["health"]} | {enemy['name']} HP: {enemy_hp}")
-        print("Actions:\n1. Punch\n2. Run\n3. Use item")
-        attack = input("Choose what do to. Type 1-3: ")
+        print("Actions:\n1. Punch\n2. Run\n3. Use item\n4. Use Weapon")
+        attack = input("Choose what do to. Type 1-4: ")
         #Punch
         if attack == "1":
-            if "strength_drugs" not in backpack.keys():
-                damage = 5
-                enemy_hp -= damage
-            else:
-                damage = 5 + player["backpack"]["strength_drugs"] * 3
-                print(f"You punch the {enemy['name']} and do {damage}!")
-                enemy_hp -= damage
+            strength_bonus = backpack.get("strength_drugs", 0)
+            damage = 5 + (strength_bonus * 3)
+            print(f"You punch the {enemy['name']} and do {damage}.")
         #Run
         elif attack == "2":
-            base_escape = 30
-            if "speed_drugs" not in backpack.keys():
-                escape_chance = random.randint(1,100)
-                if escape_chance >= random.randint(1,100)
-                    return"escaped"
-                else:
-                    
-            escape_chance = base_escape + (player["backpack"]["speed_drugs"] * 15)
+            speed_bonus = backpack.get("speed_drugs", 0)
+            escape_chance = 30 + (speed_bonus * 15)
             if random.randint(1,100) <= escape_chance:
                 print("You escaped.")
                 return "escaped"
@@ -135,14 +128,14 @@ def combat(player,enemy):
                 print(f"You try to run but the {enemy['name']} stops you.")
         #Use Item
         elif attack == "3":
-            use_item(player)
-        else:
-            print("Invalid Choice.")
+            use_item()
+        elif attack == "4":
+            print("Weapons in your backpack:")
     #Enemy turn befroe chicking if player died.
-            if enemy_hp > 0:
-                dmg = enemy["attack"]
-                print(f"The {enemy['name']} does {dmg}.")
-                player["health"] -= dmg
+        if enemy_hp > 0:
+            dmg = enemy["attack"]
+            print(f"The {enemy['name']} does {dmg} damage.")
+            player["health"] -= dmg
         #Outcome
     if player["health"] <= 0:
         print("You died.")
@@ -173,7 +166,7 @@ def the_house():
                 continue
             else:
                 print("You explore the bedroom.\nYou find a baseball bat.\nBaseball bat added to backpack")
-                backpack["baseball-bat"] = 30
+                backpack["baseball bat"] = 30
                 continue
 	#ALSO IF house_location is set to 2
         elif house_location == "2":
@@ -244,7 +237,7 @@ def police_station():
                     continue
                 else:
                     print("You enter to the armory. You see a pistol.\nPistol added to backpack. ")
-                    backpack["Pistol"] = 50
+                    backpack["Pistol"] = 40
                     print("You see a medpack. Medpack added to beckpack.")
                     backpack['Medpack'] = 50
                     continue
