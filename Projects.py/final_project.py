@@ -2,7 +2,7 @@ import random
 #backpack is set to a DICTIONARY
 backpack = {}
 #enemy names and health dicitonary
-enemy = {"name":"Unknown Thug","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed-steroids": 30}}
+enemy = {"name":"Unknown Thug","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed_drugs": 30}}
 player = {"name": "John", "health": 100, "strength": 10, "speed": 20, "backpack":backpack}
 jimmy = {"name": "Jimmy", "Health": 120, "attack": "30", "description": "The leader of the criminal gang, The Crypts, and the local Arby's Manager.", "loot": "meat slicer"}
 diner_enemy = {"name": "Uknown", "Health": 50, "description": "A thug outisde the diner guarding a dumpster.", "loot":{"pipe": 30, "strength_drugs": 1, "clue": "Lets meet up with J in the w----"}}
@@ -81,7 +81,7 @@ def use_item(player):
     if choice == "medpack" and "Medpack" in backpack:
         if backpack.get("Medpack", 0) > 0:
             player["health"] += 25
-            backpack["medpacks"] -= 1
+            backpack["Medpack"] -= 1
             print("You use a medpack and heal 25 HP.")
         else:
             print("You have no medpacks.")
@@ -109,7 +109,7 @@ def combat(player,enemy):
     enemy_hp = enemy.get("health", enemy.get("Health"))
     #Combat loop
     while player["health"] > 0 and enemy_hp > 0:
-        print(f"\nYour HP: {player["health"]} | {enemy['name']} HP: {enemy_hp}")
+        print(f"\nYour HP: {player['health']} | {enemy['name']} HP: {enemy_hp}")
         print("Actions:\n1. Punch\n2. Run\n3. Use item\n4. Use Weapon")
         attack = input("Choose what do to. Type 1-4: ")
         #Punch
@@ -128,9 +128,19 @@ def combat(player,enemy):
                 print(f"You try to run but the {enemy['name']} stops you.")
         #Use Item
         elif attack == "3":
-            use_item()
+            use_item(player)
         elif attack == "4":
             print("Weapons in your backpack:")
+            for item in player["backpack"]:
+                if item in weapons_damage:
+                    print(f"Items: {item}")
+            weapon_choice = input("Type the weapon you want to use: ").strip()
+            if weapon_choice in player["backpack"] and weapon_choice in weapons_damage:
+                damage = weapons_damage[weapon_choice]
+                print(f"You use {weapon_choice} and do {damage} damage to {enemy['name']}.")
+                enemy_hp -= damage
+            else:
+                print("You don't have that weapon.")
     #Enemy turn befroe chicking if player died.
         if enemy_hp > 0:
             dmg = enemy["attack"]
@@ -166,7 +176,7 @@ def the_house():
                 continue
             else:
                 print("You explore the bedroom.\nYou find a baseball bat.\nBaseball bat added to backpack")
-                backpack["baseball bat"] = 30
+                backpack["baseball-bat"] = 30
                 continue
 	#ALSO IF house_location is set to 2
         elif house_location == "2":
@@ -403,7 +413,7 @@ def davids_bar():
             if result == "victory":
                 print("The strangers run away and drop some pipes and speed steroids.")
                 backpack["speed_drugs"] = backpack.get("speed_drugs", 0) + 1
-                backpack["pipes"] = backpack.get("clue_paper", 0) + 1
+                backpack["pipe"] = backpack.get("pipe", 0) + 1
                 continue
             elif result == "dead":
                 print("You have died. Game over.")
@@ -488,7 +498,7 @@ def bill_diner():
             #PRINT You enter outback of the diner, there is a group of guys hanging around a dumpster.
             print("You enter outback of the diner, there is a group of strangers hanging around a dumpster.")
             print("A stranger approaches.\nStranger: *Hey, what are you doing here?!*")
-            combat()
+            combat(player, diner_enemy)
 
             #PRINT Stranger: "Hey what are you do here?!"
             #have a combat fight with items in your inventory if you win you get streength steroid and a clue about the guys in the woods
@@ -523,7 +533,7 @@ def smith_market():
         #PRINT You attack the man
         print("You attack the man.")
         #Combat thing, maybe a function? if you win he drops a clue that talks about a meeting in the woods, and he runs away. If you lose you die.
-        result = combat(player, enemy2)
+        result = combat(player, enemy2["Thug"])
         if result == "victory":
             print("You defeat the stranger and he runs away dropping a clue.")
             backpack["clue"] = backpack.get("clue3", 0) + 1
