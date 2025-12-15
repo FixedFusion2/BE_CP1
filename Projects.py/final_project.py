@@ -2,11 +2,11 @@ import random
 #backpack is set to a DICTIONARY
 backpack = {}
 #enemy names and health dicitonary
-enemy = {"name":"Unknown Thug","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed_drugs": 30}}
+enemy = {"name":"Unknown Thug","health": 50, "attack": 15, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed_drugs": 30}}
 player = {"name": "John", "health": 100, "strength": 10, "speed": 20, "backpack":backpack}
-jimmy = {"name": "Jimmy", "Health": 120, "attack": "30", "description": "The leader of the criminal gang, The Crypts, and the local Arby's Manager.", "loot": "meat slicer"}
-diner_enemy = {"name": "Uknown", "Health": 50, "description": "A thug outisde the diner guarding a dumpster.", "loot":{"pipe": 30, "strength_drugs": 1, "clue": "Lets meet up with J in the w----"}}
-enemy2 = {"Thug":{"name":"Unknown Thug","health": 50, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30,"clue3":"Meet up in woods on ------."}}}
+jimmy = {"name": "Jimmy", "Health": 120, "attack": 30, "description": "The leader of the criminal gang, The Crypts, and the local Arby's Manager.", "loot": "meat slicer"}
+diner_enemy = {"name": "Uknown", "Health": 50, "attack": 25, "description": "A thug outisde the diner guarding a dumpster.", "loot":{"pipe": 30, "strength_drugs": 1, "clue": "Lets meet up with J in the w----"}}
+enemy2 = {"Thug":{"name":"Unknown Thug","health": 60, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30,"clue3":"Meet up in woods on ------."}}}
 weapons_damage = {"baseball-bat": 30, "Pistol": 40, "Pitchfork": 30, "pipe": 30}
 #Woods landing missouri is the name of the town
 
@@ -117,6 +117,7 @@ def combat(player,enemy):
             strength_bonus = backpack.get("strength_drugs", 0)
             damage = 5 + (strength_bonus * 3)
             print(f"You punch the {enemy['name']} and do {damage}.")
+            enemy_hp -= damage
         #Run
         elif attack == "2":
             speed_bonus = backpack.get("speed_drugs", 0)
@@ -404,23 +405,27 @@ def davids_bar():
     #IF bar_location is set to 4
         elif bar_location == "4":
         #PRINT You explore the back and find 3 guys huddled around a dumpster.
-            print("You explore the back and find 3 guys huddled around a dumpster.")
-            print("A stranger approaches.\nStranger: *What are you doing here?*")
-            combat(player,enemy)
-        #PRINT A stranger approaches. Stranger: "What are you doing here?"
-        #Have combat fight with the items in your inventory.
-            result = combat(player,enemy)
-            if result == "victory":
-                print("The strangers run away and drop some pipes and speed steroids.")
-                backpack["speed_drugs"] = backpack.get("speed_drugs", 0) + 1
-                backpack["pipe"] = backpack.get("pipe", 0) + 1
+            if "speed_drugs" in backpack.keys():
+                print("You've already been here.")
                 continue
-            elif result == "dead":
-                print("You have died. Game over.")
-                return
-            elif result == "escaped":
-                print("The strangers run away.")
-                continue
+            else:
+                print("You explore the back and find 3 guys huddled around a dumpster.")
+                print("A stranger approaches.\nStranger: *What are you doing here?*")
+                combat(player,enemy)
+            #PRINT A stranger approaches. Stranger: "What are you doing here?"
+            #Have combat fight with the items in your inventory.
+                result = combat(player,enemy)
+                if result == "victory":
+                    print("The strangers run away and drop some pipes and speed steroids.")
+                    backpack["speed_drugs"] = backpack.get("speed_drugs", 0) + 1
+                    backpack["pipe"] = backpack.get("pipe", 0) + 1
+                    continue
+                elif result == "dead":
+                    print("You have died. Game over.")
+                    return
+                elif result == "escaped":
+                    print("The strangers run away.")
+                    continue
         #If you win the fight
             #PRINT The strangers run away and drup a peice of paper, and 1 bags of speed steroids, and the pipes tehy were fighting you with.
     #ELSE
@@ -495,26 +500,30 @@ def bill_diner():
             continue
         #IF diner_location is set to 3
         elif diner_location == "3":
-            #PRINT You enter outback of the diner, there is a group of guys hanging around a dumpster.
-            print("You enter outback of the diner, there is a group of strangers hanging around a dumpster.")
-            print("A stranger approaches.\nStranger: *Hey, what are you doing here?!*")
-            combat(player, diner_enemy)
-
-            #PRINT Stranger: "Hey what are you do here?!"
-            #have a combat fight with items in your inventory if you win you get streength steroid and a clue about the guys in the woods
-            result = combat(player,diner_enemy)
-            if result == "victory":
-                print("The strangers run away dropping a clue, strength steroids, and the pipes they fought with.")
-                backpack["strength_drugs"] = backpack.get("strength_drugs", 0) + 1
-                backpack["pipe"] = backpack.get("pipe", 0) + 1
-                backpack["clue"] = backpack.get("clue", 0) + 1
+            if "strength_drugs" in backpack.keys():
+                print("You've already been here.")
                 continue
-            elif result == "dead":
-                print("You have died. Game over.")
-                return
-            elif result == "escaped":
-                print("You run away from the strangers. You managed to escape.")
-                continue    
+            else:
+                #PRINT You enter outback of the diner, there is a group of guys hanging around a dumpster.
+                print("You enter outback of the diner, there is a group of strangers hanging around a dumpster.")
+                print("A stranger approaches.\nStranger: *Hey, what are you doing here?!*")
+                combat(player, diner_enemy)
+
+                #PRINT Stranger: "Hey what are you do here?!"
+                #have a combat fight with items in your inventory if you win you get streength steroid and a clue about the guys in the woods
+                result = combat(player,diner_enemy)
+                if result == "victory":
+                    print("The strangers run away dropping a clue, strength steroids, and the pipes they fought with.")
+                    backpack["strength_drugs"] = backpack.get("strength_drugs", 0) + 1
+                    backpack["pipe"] = backpack.get("pipe", 0) + 1
+                    backpack["clue"] = backpack.get("clue", 0) + 1
+                    continue
+                elif result == "dead":
+                    print("You have died. Game over.")
+                    return
+                elif result == "escaped":
+                    print("You run away from the strangers. You managed to escape.")
+                    continue    
         #IF diner_location is set to 4
         else:
             #PRINT you leave the bar
@@ -527,40 +536,45 @@ def smith_market():
     #PRINT You start walking around Smith's Supermarket, you can't go inside because its closed.
     print("You start walking around Smith's Supermarket, and you find you can't go inside because its closed.")
     #action_choice is set to INPUT You see a guy hanging around the backdoor what do you do? 1. Attack 2. Follow Him 3. Ask him what he's doing here. 4. Just leave.
-    action_choice = input("You see a guy hanging around the backdoor of Smith's, what do you do?\n1. Attack\n2. Follow Him\n3. Ask him what he's doing here.\n4. Just leave.")
-    #IF action_choice is set to 1
-    if action_choice == "1":
-        #PRINT You attack the man
-        print("You attack the man.")
-        #Combat thing, maybe a function? if you win he drops a clue that talks about a meeting in the woods, and he runs away. If you lose you die.
-        result = combat(player, enemy2["Thug"])
-        if result == "victory":
-            print("You defeat the stranger and he runs away dropping a clue.")
-            backpack["clue"] = backpack.get("clue3", 0) + 1
-            locater()
-        elif result == "dead":
-                print("You have died. Game over.")
-                return
-        elif result == "escaped":
-            print("You run away from the strangers. You managed to escape.")
-            locater()
-    #IF action_choice is set to 2
-    #Then go to locater()
+    if "clue3" in backpack.keys():
+        print("You've already been here.")
         locater()
-    elif action_choice == "2":
-        #PRINT You follow him but he goes around a corner and seems to disappear
-        print("You follow him, but he goes around a corner and seems to disappear...")
-        locater()
-    #IF action_choice is set to 3
-    elif action_choice == "3":
-        #PRINT He jumps in surprise and runs away
-        print("He jumps in surprise and runs away.")
-        locater()
-    #ELSE
     else:
-        #PRINT You leave smith's supermarket.
-        print("You leave Smith's Supermarket.")
-    locater()
+        action_choice = input("You see a guy hanging around the backdoor of Smith's, what do you do?\n1. Attack\n2. Follow Him\n3. Ask him what he's doing here.\n4. Just leave.")
+        #IF action_choice is set to 1
+        if action_choice == "1":
+            #PRINT You attack the man
+            print("You attack the man.")
+            #Combat thing, maybe a function? if you win he drops a clue that talks about a meeting in the woods, and he runs away. If you lose you die.
+            combat(player,enemy2["Thug"])
+            result = combat(player, enemy2["Thug"])
+            if result == "victory":
+                print("You defeat the stranger and he runs away dropping a clue.")
+                backpack["clue"] = backpack.get("clue3", 0) + 1
+                locater()
+            elif result == "dead":
+                    print("You have died. Game over.")
+                    return
+            elif result == "escaped":
+                print("You run away from the strangers. You managed to escape.")
+                locater()
+        #IF action_choice is set to 2
+        #Then go to locater()
+            locater()
+        elif action_choice == "2":
+            #PRINT You follow him but he goes around a corner and seems to disappear
+            print("You follow him, but he goes around a corner and seems to disappear...")
+            locater()
+        #IF action_choice is set to 3
+        elif action_choice == "3":
+            #PRINT He jumps in surprise and runs away
+            print("He jumps in surprise and runs away.")
+            locater()
+        #ELSE
+        else:
+            #PRINT You leave smith's supermarket.
+            print("You leave Smith's Supermarket.")
+        locater()
 
 #FUNCTION Arbys
 def arbys():
@@ -642,7 +656,7 @@ def franks_farm():
 #FUNCTION The Woods
 def the_woods():
     #PRINT You enter the wodds following the man with the axe. Eventually you see him enter a shed.
-    print("You enter the woods following teh man with the axe. Eventually you see him enter a shed.")
+    print("You enter the woods following the man with the axe. Eventually you see him enter a shed.")
     #You see him take off his mask its the ARBY'S MANAGER, Jimmy Franderson. That makes sense, he is the leader of the crypts, thats why the Arby's was so empty when I was there. He was meeting with the crypts.
     print("You see him take off his mask its the ARBY'S MANAGER, Jimmy Franderson.\nThat makes sense, he is the leader of the crypts, thats why the Arby's was so empty when I was there.\nHe was meeting with the crypts.")
     #PRINT "You: Jimmy Panderson you have the right to remain silent. Anything you say can and will be used against you in later court."
@@ -651,13 +665,28 @@ def the_woods():
     print("Jimmy: *I don't think so so John.*")
     #PRINT Jimmy lunges toward you with a Meat Slicer.
     print("Jimmy lunges at ytou with a Meat Slicer.")
+    combat(player,jimmy)
     # Combat with Jimmy if his health reaches 0 you win and if your heaolth reaches 0 Jimmy wins and its game over
     #If you win you knocked Jimmy out.
     #The end, maybe more epilogue later but yeah.
+    result = combat(player, jimmy)
+    if result == "victory":
+        print("You have knocked out Jimmy, and officially solved the woods landing murder.")
+        play_again()
+    elif result == "dead":
+            print("You have died. Game over.")
+            return
 
 def start():
     print("You get handed the case of the Woods landing murder.")
     print("After driving for a while you reach woods landing.")
     locater()
 
+def play_again():
+    print("You would you like to play again?")
+    again = input("Type yes or no: ").lower()
+    if again == "yes":
+        start()
+    else:
+        exit()
 start()
