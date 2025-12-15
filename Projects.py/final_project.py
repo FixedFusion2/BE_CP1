@@ -1,10 +1,12 @@
 import random
 #backpack is set to a DICTIONARY
 backpack = {}
+pistol_ammo = 6
 #enemy names and health dicitonary
 enemy = {"name":"Unknown Thug","health": 50, "attack": 15, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30, "speed_drugs": 30}}
 player = {"name": "John", "health": 100, "strength": 10, "speed": 20, "backpack":backpack}
 jimmy = {"name": "Jimmy", "Health": 120, "attack": 30, "description": "The leader of the criminal gang, The Crypts, and the local Arby's Manager.", "loot": "meat slicer"}
+jimmy_defeated = False
 diner_enemy = {"name": "Uknown", "Health": 50, "attack": 25, "description": "A thug outisde the diner guarding a dumpster.", "loot":{"pipe": 30, "strength_drugs": 1, "clue": "Lets meet up with J in the w----"}}
 enemy2 = {"Thug":{"name":"Unknown Thug","health": 60, "attack": 25, "description": "Thug hired by the crypts leader.", "loot":{"pipe": 30,"clue3":"Meet up in woods on ------."}}}
 weapons_damage = {"baseball-bat": 30, "Pistol": 40, "Pitchfork": 30, "pipe": 30}
@@ -104,6 +106,7 @@ def use_item(player):
 
 #FUNCTION Combat
 def combat(player,enemy):
+    global pistol_ammo
     print(f"A {enemy['name']} attacks you.")
     print({enemy["description"]})
     enemy_hp = enemy.get("health", enemy.get("Health"))
@@ -134,12 +137,24 @@ def combat(player,enemy):
             print("Weapons in your backpack:")
             for item in player["backpack"]:
                 if item in weapons_damage:
-                    print(f"Items: {item}")
+                    if item == "Pistol":
+                        print(f"Items: {item} ({pistol_ammo} shots)")
+                    else:
+                        print(f"Items: {item}")
             weapon_choice = input("Type the weapon you want to use: ").strip()
             if weapon_choice in player["backpack"] and weapon_choice in weapons_damage:
-                damage = weapons_damage[weapon_choice]
-                print(f"You use {weapon_choice} and do {damage} damage to {enemy['name']}.")
-                enemy_hp -= damage
+                if weapon_choice  == "Pistol":
+                    if pistol_ammo <= 0:
+                        print("You're out of ammo.")
+                    else:
+                        pistol_ammo -= 1
+                        damage = weapons_damage["Pistol"]
+                        print(f"You fire the pistol ({pistol_ammo} shots left) and do {damage} to {enemy["name"]}")
+                        enemy_hp -= damage
+                else:        
+                    damage = weapons_damage[weapon_choice]
+                    print(f"You use {weapon_choice} and do {damage} damage to {enemy['name']}.")
+                    enemy_hp -= damage
             else:
                 print("You don't have that weapon.")
     #Enemy turn befroe chicking if player died.
@@ -655,6 +670,7 @@ def franks_farm():
 
 #FUNCTION The Woods
 def the_woods():
+    global jimmy_defeated
     #PRINT You enter the wodds following the man with the axe. Eventually you see him enter a shed.
     print("You enter the woods following the man with the axe. Eventually you see him enter a shed.")
     #You see him take off his mask its the ARBY'S MANAGER, Jimmy Franderson. That makes sense, he is the leader of the crypts, thats why the Arby's was so empty when I was there. He was meeting with the crypts.
@@ -665,13 +681,13 @@ def the_woods():
     print("Jimmy: *I don't think so so John.*")
     #PRINT Jimmy lunges toward you with a Meat Slicer.
     print("Jimmy lunges at ytou with a Meat Slicer.")
-    combat(player,jimmy)
     # Combat with Jimmy if his health reaches 0 you win and if your heaolth reaches 0 Jimmy wins and its game over
     #If you win you knocked Jimmy out.
     #The end, maybe more epilogue later but yeah.
     result = combat(player, jimmy)
     if result == "victory":
         print("You have knocked out Jimmy, and officially solved the woods landing murder.")
+        jimmy_defeated = True
         play_again()
     elif result == "dead":
             print("You have died. Game over.")
