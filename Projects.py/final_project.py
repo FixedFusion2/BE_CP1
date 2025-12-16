@@ -437,7 +437,7 @@ def davids_bar():
                     continue
                 elif result == "dead":
                     print("You have died. Game over.")
-                    return
+                    play_again()
                 elif result == "escaped":
                     print("The strangers run away.")
                     continue
@@ -535,7 +535,7 @@ def bill_diner():
                     continue
                 elif result == "dead":
                     print("You have died. Game over.")
-                    return
+                    play_again()
                 elif result == "escaped":
                     print("You run away from the strangers. You managed to escape.")
                     continue    
@@ -569,7 +569,7 @@ def smith_market():
                 locater()
             elif result == "dead":
                     print("You have died. Game over.")
-                    return
+                    play_again()
             elif result == "escaped":
                 print("You run away from the strangers. You managed to escape.")
                 locater()
