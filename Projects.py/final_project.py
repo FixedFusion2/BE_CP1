@@ -691,7 +691,7 @@ def the_woods():
         play_again()
     elif result == "dead":
             print("You have died. Game over.")
-            return
+            play_again()
 
 def start():
     print("You get handed the case of the Woods landing murder.")
